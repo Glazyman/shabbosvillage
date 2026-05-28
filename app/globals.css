@@ -141,6 +141,13 @@ body {
   gap: 12px;
 }
 
+/* ── FOOTER STRUCTURE ── */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+
 /* ── NAVBAR RESPONSIVE ── */
 .nav-desktop   { display: flex; align-items: center; gap: 40px; }
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; }
@@ -246,6 +253,20 @@ div:hover > .gallery-caption-overlay {
     padding-left: 24px !important;
   }
 
+  /* ── FOOTER MOBILE ── */
+  .footer-brand {
+    text-align: center;
+    margin-bottom: 32px !important;
+  }
+  .footer-brand > div { justify-content: center; }
+  .footer-brand p { max-width: 100% !important; }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-on-site { display: none !important; }
+
   /* ── MOBILE CENTERING ── */
 
   /* Footer columns — single col, centered */
@@ -276,6 +297,9 @@ div:hover > .gallery-caption-overlay {
 
   /* CTA sections — ensure buttons wrap centered */
   .cta-section > div { justify-content: center; }
+
+  /* Step labels — hide on mobile, show just circles */
+  .step-label { display: none !important; }
 
   /* Booking back+continue button row — stack on mobile */
   .btn-row {

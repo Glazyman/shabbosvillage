@@ -99,21 +99,21 @@ export default function BookPage() {
       <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px)" }}>
 
         {/* Step indicators */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0", marginBottom: "64px" }}>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "48px" }}>
           {[{ n: 1, label: "Your Details" }, { n: 2, label: "Stay Info" }, { n: 3, label: "Review & Pay" }].map((s, i) => (
             <div key={s.n} style={{ display: "flex", alignItems: "center", flex: i < 2 ? 1 : "none" }}>
               <button
                 onClick={() => step > s.n && setStep(s.n)}
-                style={{ display: "flex", alignItems: "center", gap: "12px", background: "none", border: "none", cursor: step > s.n ? "pointer" : "default", padding: "0" }}
+                style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: step > s.n ? "pointer" : "default", padding: "0", flexShrink: 0 }}
               >
-                <div style={{ width: "32px", height: "32px", borderRadius: "50%", backgroundColor: step >= s.n ? "#2D5016" : "#EDE4D3", color: step >= s.n ? "#FDFAF5" : "#8B8070", fontSize: "0.78rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-playfair)", fontStyle: step > s.n ? "normal" : "normal" }}>
+                <div style={{ width: "36px", height: "36px", borderRadius: "50%", backgroundColor: step >= s.n ? "#2D5016" : "#EDE4D3", color: step >= s.n ? "#FDFAF5" : "#8B8070", fontSize: "0.82rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   {step > s.n ? "✓" : s.n}
                 </div>
-                <span style={{ fontSize: "0.78rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: step === s.n ? "#2D5016" : "#8B8070", whiteSpace: "nowrap" }}>
+                <span className="step-label" style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: step === s.n ? "#2D5016" : "#8B8070", whiteSpace: "nowrap" }}>
                   {s.label}
                 </span>
               </button>
-              {i < 2 && <div style={{ flex: 1, height: "1px", backgroundColor: step > s.n ? "#2D5016" : "#EDE4D3", margin: "0 16px", transition: "background-color 0.3s" }} />}
+              {i < 2 && <div style={{ flex: 1, height: "1px", backgroundColor: step > s.n ? "#2D5016" : "#EDE4D3", margin: "0 12px", minWidth: "16px", transition: "background-color 0.3s" }} />}
             </div>
           ))}
         </div>

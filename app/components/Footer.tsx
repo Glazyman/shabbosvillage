@@ -5,28 +5,27 @@ export default function Footer() {
     <footer style={{ backgroundColor: "#1a2a0f", color: "#FDFAF5", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px) clamp(24px,4vw,40px)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
 
-        {/* Top */}
-        <div className="footer-grid">
-
-          {/* Brand */}
-          <div>
-            {/* Tent SVG logo */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
-              <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 1L27 21H1L14 1Z" stroke="#D4A853" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
-                <path d="M14 1L20 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
-                <path d="M14 1L8 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
-                <path d="M9 14H19" stroke="#D4A853" strokeWidth="1" opacity="0.6"/>
-                <rect x="11" y="17" width="6" height="4" stroke="#D4A853" strokeWidth="1" fill="none"/>
-              </svg>
-              <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
-                Shabbos Village
-              </span>
-            </div>
-            <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "240px" }}>
-              A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
-            </p>
+        {/* Brand */}
+        <div className="footer-brand" style={{ marginBottom: "48px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+            <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 1L27 21H1L14 1Z" stroke="#D4A853" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+              <path d="M14 1L20 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
+              <path d="M14 1L8 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
+              <path d="M9 14H19" stroke="#D4A853" strokeWidth="1" opacity="0.6"/>
+              <rect x="11" y="17" width="6" height="4" stroke="#D4A853" strokeWidth="1" fill="none"/>
+            </svg>
+            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
+              Shabbos Village
+            </span>
           </div>
+          <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "280px" }}>
+            A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
+          </p>
+        </div>
+
+        {/* Links grid — Explore + On Site + Contact */}
+        <div className="footer-links-grid" style={{ marginBottom: "48px" }}>
 
           {/* Explore */}
           <div>
@@ -42,15 +41,15 @@ export default function Footer() {
                 { href: "/rules",   label: "Rules & Safety" },
                 { href: "/waiver",  label: "Hold Harmless" },
               ].map((l) => (
-                <Link key={l.href} href={l.href} style={{ color: "rgba(253,250,245,0.55)", textDecoration: "none", fontSize: "0.88rem", transition: "color 0.2s" }}>
+                <Link key={l.href} href={l.href} style={{ color: "rgba(253,250,245,0.55)", textDecoration: "none", fontSize: "0.88rem" }}>
                   {l.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* On Site */}
-          <div>
+          {/* On Site — hidden on mobile */}
+          <div className="footer-on-site">
             <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
               On Site
             </p>
