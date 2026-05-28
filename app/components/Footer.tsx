@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+        <div className="footer-bottom" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
           <p style={{ fontSize: "0.8rem", color: "rgba(253,250,245,0.3)" }}>
             © {new Date().getFullYear()} Shabbos Village. All rights reserved.
           </p>

@@ -219,7 +219,7 @@ export default function BookPage() {
             </div>
 
             {error && <p style={{ color: "#c0392b", fontSize: "0.88rem", marginBottom: "16px" }}>{error}</p>}
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div className="btn-row" style={{ display: "flex", gap: "12px" }}>
               <button onClick={() => setStep(1)} style={{ background: "none", border: "1px solid #EDE4D3", color: "#4a4a3a", fontWeight: 600, fontSize: "0.88rem", padding: "13px 28px", borderRadius: "3px", cursor: "pointer", fontFamily: "inherit" }}>
                 ← Back
               </button>

@@ -234,6 +234,50 @@ div:hover > .gallery-caption-overlay {
   .faq-answer {
     padding-left: 24px !important;
   }
+
+  /* ── MOBILE CENTERING ── */
+
+  /* Footer columns — single col, centered */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+  .footer-grid > div > div { justify-content: center; }
+  .footer-grid > div nav   { align-items: center; }
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    gap: 16px !important;
+  }
+
+  /* Buttons — full width on mobile */
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Booking info strip items — centered */
+  .booking-info-strip > div {
+    text-align: center;
+  }
+
+  /* CTA sections — ensure buttons wrap centered */
+  .cta-section > div { justify-content: center; }
+
+  /* Booking back+continue button row — stack on mobile */
+  .btn-row {
+    flex-direction: column !important;
+  }
+  .btn-row > button:first-child {
+    order: 2;
+    text-align: center;
+  }
+  .btn-row > button:last-child,
+  .btn-row > .btn-primary {
+    order: 1;
+  }
 }
 
 @media (max-width: 768px) {
