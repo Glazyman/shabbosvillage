@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#1a2a0f", color: "#FDFAF5", padding: "80px 60px 40px" }}>
+    <footer style={{ backgroundColor: "#1a2a0f", color: "#FDFAF5", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px) clamp(24px,4vw,40px)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
 
         {/* Top */}

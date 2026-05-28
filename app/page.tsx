@@ -203,7 +203,7 @@ export default function Home() {
       </section>
 
       {/* ── EDITORIAL INTRO ── */}
-      <section style={{ backgroundColor: "#FDFAF5", padding: "120px 24px" }}>
+      <section style={{ backgroundColor: "#FDFAF5", padding: "clamp(56px,8vw,120px) 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div className="editorial-grid">
             {/* Left — label + large number */}
@@ -321,7 +321,7 @@ export default function Home() {
           <div
             className="split-content"
             style={{
-              padding: "80px 60px",
+              padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -449,7 +449,7 @@ export default function Home() {
       </section>
 
       {/* ── GROUPS & EVENTS — editorial grid ── */}
-      <section style={{ backgroundColor: "#FDFAF5", padding: "120px 24px" }}>
+      <section style={{ backgroundColor: "#FDFAF5", padding: "clamp(56px,8vw,120px) 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div
             style={{
@@ -518,7 +518,7 @@ export default function Home() {
                 key={card.title}
                 style={{
                   backgroundColor: "#FDFAF5",
-                  padding: "48px 44px",
+                  padding: "clamp(28px,4vw,48px) clamp(20px,3.5vw,44px)",
                 }}
               >
                 <p
@@ -559,7 +559,7 @@ export default function Home() {
         className="cta-section"
         style={{
           backgroundColor: "#1a2a0f",
-          padding: "120px 24px",
+          padding: "clamp(56px,8vw,120px) 24px",
           textAlign: "center",
         }}
       >

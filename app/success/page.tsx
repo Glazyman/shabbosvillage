@@ -25,8 +25,8 @@ function SuccessContent() {
   }, [sessionId]);
 
   return (
-    <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}>
-      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 40px" }}>
+    <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", paddingTop: "clamp(80px,10vw,140px)", paddingBottom: "clamp(48px,7vw,100px)" }}>
+      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 clamp(20px,4vw,40px)" }}>
 
         {/* Check */}
         <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#2D5016", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "40px", color: "#FDFAF5", fontSize: "1.4rem" }}>

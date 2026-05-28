@@ -26,7 +26,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── MISSION ── */}
-      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+      <section className="pg-section" style={{ padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)", maxWidth: "1100px", margin: "0 auto" }}>
         <div className="editorial-grid">
           <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
@@ -51,10 +51,10 @@ export default function AboutPage() {
       </section>
 
       {/* ── DIVIDER ── */}
-      <div style={{ borderTop: "1px solid #EDE4D3", margin: "0 40px" }} />
+      <div style={{ borderTop: "1px solid #EDE4D3", margin: "0 clamp(24px,5vw,60px)" }} />
 
       {/* ── WHAT TO EXPECT ── */}
-      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+      <section className="pg-section" style={{ padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)", maxWidth: "1100px", margin: "0 auto" }}>
         <div className="editorial-grid">
           <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
@@ -111,7 +111,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── GROUPS ── */}
-      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+      <section className="pg-section" style={{ padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)", maxWidth: "1100px", margin: "0 auto" }}>
         <div className="editorial-grid">
           <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "100px 60px", textAlign: "center" }}>
+      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "clamp(48px,7vw,100px) clamp(24px,5vw,60px)", textAlign: "center" }}>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
           Ready to come?
         </p>

@@ -71,7 +71,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── DISCLAIMER ── */}
-      <section style={{ maxWidth: "1000px", margin: "0 auto", padding: "80px 60px 0" }}>
+      <section style={{ maxWidth: "1000px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px) 0" }}>
         <div style={{ borderLeft: "3px solid #D4A853", paddingLeft: "32px" }}>
           <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.3rem", fontWeight: 700, color: "#1a1a12", marginBottom: "16px" }}>
             Camping Disclaimer
@@ -89,7 +89,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── RULES SECTIONS ── */}
-      <section style={{ maxWidth: "1000px", margin: "0 auto", padding: "80px 60px" }}>
+      <section style={{ maxWidth: "1000px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px)" }}>
         {sections.map((section, si) => (
           <div key={section.title} style={{ marginBottom: si < sections.length - 1 ? "80px" : "0" }}>
             <div style={{ display: "flex", gap: "40px", alignItems: "baseline", marginBottom: "40px" }}>
@@ -100,7 +100,7 @@ export default function RulesPage() {
                 {section.title}
               </h2>
             </div>
-            <div className="rules-indent" style={{ paddingLeft: "100px" }}>
+            <div className="rules-indent" style={{ paddingLeft: "clamp(0px,9vw,100px)" }}>
               {section.items.map((item, i) => (
                 <div key={item} style={{ display: "flex", gap: "20px", alignItems: "flex-start", padding: "18px 0", borderBottom: i < section.items.length - 1 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ color: "#D4A853", fontSize: "0.5rem", marginTop: "7px", flexShrink: 0 }}>◆</span>
@@ -113,7 +113,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── COMMUNITY NOTE ── */}
-      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "100px 60px" }}>
+      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "clamp(48px,7vw,100px) clamp(24px,5vw,60px)" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "24px" }}>
             Our Commitment

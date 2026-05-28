@@ -27,7 +27,7 @@ export default function GalleryPage() {
           priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,20,8,0.4) 0%, rgba(10,20,8,0.7) 100%)" }} />
-        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
+        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
             The Village
           </p>
@@ -38,23 +38,15 @@ export default function GalleryPage() {
       </section>
 
       {/* ── INTRO ── */}
-      <section style={{ maxWidth: "860px", margin: "0 auto", padding: "80px 40px 60px" }}>
+      <section style={{ maxWidth: "860px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(20px,4vw,40px) clamp(30px,5vw,60px)" }}>
         <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#4a4a3a", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
           These photos are a preview of the Shabbos Village experience. Real campground photos coming soon — check back after our opening season.
         </p>
       </section>
 
       {/* ── PHOTO GRID ── */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 120px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gridAutoRows: "280px",
-            gap: "8px",
-          }}
-          className="gallery-grid"
-        >
+      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px clamp(56px,8vw,120px)" }}>
+        <div className="gallery-grid">
           {photos.map((photo, i) => (
             <div
               key={i}
@@ -100,7 +92,7 @@ export default function GalleryPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "100px 60px", textAlign: "center" }}>
+      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "clamp(48px,7vw,100px) clamp(24px,5vw,60px)", textAlign: "center" }}>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
           Ready to experience it?
         </p>

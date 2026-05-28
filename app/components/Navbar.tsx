@@ -48,13 +48,13 @@ export default function Navbar() {
             margin: "0 auto",
             padding: "0 clamp(20px, 5vw, 40px)",
             height: scrolled ? "64px" : "80px",
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            justifyContent: "space-between",
             transition: "height 0.5s ease",
           }}
         >
-          {/* Logo */}
+          {/* Logo — left */}
           <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px", zIndex: 110 }}>
             <svg width="26" height="20" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 1L27 21H1L14 1Z" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
@@ -68,13 +68,17 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop links — center */}
           <div className="nav-desktop">
             {links.map((l) => (
               <Link key={l.href} href={l.href} style={{ color: textColor, fontWeight: 500, fontSize: "0.82rem", letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", opacity: 0.85, transition: "opacity 0.2s" }}>
                 {l.label}
               </Link>
             ))}
+          </div>
+
+          {/* Reserve button — right — desktop only */}
+          <div className="nav-desktop" style={{ justifyContent: "flex-end" }}>
             <Link href="/book" style={{ display: "inline-block", backgroundColor: scrolled ? "#2D5016" : "rgba(255,255,255,0.14)", border: scrolled ? "none" : "1px solid rgba(255,255,255,0.45)", backdropFilter: "blur(4px)", color: "#FDFAF5", fontWeight: 600, fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", borderRadius: "3px", textDecoration: "none", transition: "all 0.3s" }}>
               Reserve
             </Link>
@@ -84,7 +88,7 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             className="nav-hamburger"
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, width: "36px", height: "36px" }}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, width: "36px", height: "36px", gridColumn: "3", justifySelf: "end" }}
             aria-label="Toggle menu"
           >
             <span style={{ display: "block", width: open ? "22px" : "22px", height: "1.5px", backgroundColor: open ? "#1a1a12" : textColor, transition: "all 0.35s", transform: open ? "translateY(7.5px) rotate(45deg)" : "none" }} />

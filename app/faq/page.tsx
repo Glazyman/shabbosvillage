@@ -47,7 +47,7 @@ export default function FAQPage() {
       </section>
 
       {/* ── FAQ LIST ── */}
-      <section style={{ maxWidth: "860px", margin: "0 auto", padding: "100px 40px" }}>
+      <section style={{ maxWidth: "860px", margin: "0 auto", padding: "clamp(48px,7vw,100px) clamp(20px,4vw,40px)" }}>
         <div>
           {faqs.map((faq, i) => (
             <div key={i} style={{ borderBottom: "1px solid #EDE4D3" }}>
@@ -88,7 +88,7 @@ export default function FAQPage() {
         </div>
 
         {/* Still have questions */}
-        <div style={{ marginTop: "80px", padding: "60px", backgroundColor: "#1a2a0f", borderRadius: "4px", textAlign: "center" }}>
+        <div style={{ marginTop: "80px", padding: "clamp(32px,5vw,60px)", backgroundColor: "#1a2a0f", borderRadius: "4px", textAlign: "center" }}>
           <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.8rem", fontWeight: 700, color: "#FDFAF5", marginBottom: "12px" }}>
             Still have questions?
           </h2>

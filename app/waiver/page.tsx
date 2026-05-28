@@ -44,7 +44,7 @@ export default function WaiverPage() {
 
   if (submitted) {
     return (
-      <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px 40px 80px" }}>
+      <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "clamp(56px,8vw,120px) clamp(20px,4vw,40px) clamp(40px,6vw,80px)" }}>
         <div style={{ textAlign: "center", maxWidth: "500px" }}>
           <div style={{ width: "64px", height: "64px", borderRadius: "50%", backgroundColor: "#2D5016", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", color: "#FDFAF5", fontSize: "1.5rem" }}>
             ✓
@@ -85,7 +85,7 @@ export default function WaiverPage() {
         </div>
       </section>
 
-      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "80px 40px" }}>
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(20px,4vw,40px)" }}>
 
         {/* Intro */}
         <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", borderLeft: "2px solid #D4A853", paddingLeft: "20px", marginBottom: "60px" }}>
