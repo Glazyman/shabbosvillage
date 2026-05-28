@@ -2,125 +2,63 @@ import Link from "next/link";
 
 export default function SuccessPage() {
   return (
-    <div
-      style={{
-        backgroundColor: "#FDFAF5",
-        minHeight: "100vh",
-        paddingTop: "120px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "120px 24px 80px",
-        textAlign: "center",
-      }}
-    >
-      {/* Animated check */}
-      <div
-        style={{
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          backgroundColor: "#2D5016",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "32px",
-          boxShadow: "0 12px 40px rgba(45,80,22,0.25)",
-          fontSize: "2.5rem",
-        }}
-      >
-        ✓
-      </div>
+    <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}>
+      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 40px" }}>
 
-      <span className="section-tag">Booking Confirmed</span>
+        {/* Check */}
+        <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#2D5016", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "40px", color: "#FDFAF5", fontSize: "1.4rem" }}>
+          ✓
+        </div>
 
-      <h1
-        style={{
-          fontFamily: "var(--font-playfair)",
-          fontSize: "clamp(2rem, 5vw, 3.5rem)",
-          fontWeight: 700,
-          color: "#2D5016",
-          marginTop: "12px",
-          marginBottom: "20px",
-          lineHeight: 1.2,
-        }}
-      >
-        Your Shabbos is Booked!
-      </h1>
+        <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "16px" }}>
+          Booking Confirmed
+        </p>
 
-      <p
-        style={{
-          fontSize: "1.05rem",
-          color: "#4a4a3a",
-          lineHeight: 1.8,
-          maxWidth: "520px",
-          marginBottom: "40px",
-        }}
-      >
-        Thank you for booking with Shabbos Village. A confirmation email has been sent
-        to you with your booking details, directions, and everything you need to know
-        for an amazing Shabbos in nature.
-      </p>
+        <h1 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, color: "#1a1a12", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "28px" }}>
+          Your Shabbos is booked.
+        </h1>
 
-      {/* Next steps */}
-      <div
-        style={{
-          backgroundColor: "#F8F3E9",
-          borderRadius: "20px",
-          padding: "36px 40px",
-          border: "1px solid #EDE4D3",
-          maxWidth: "540px",
-          width: "100%",
-          marginBottom: "40px",
-          textAlign: "left",
-        }}
-      >
-        <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.2rem", fontWeight: 700,
-                     color: "#2D5016", marginBottom: "20px" }}>
-          What Happens Next
-        </h2>
-        {[
-          { n: "1", text: "Check your email for your booking confirmation and receipt." },
-          { n: "2", text: "Directions to Shabbos Village will be included — one way in, one way out." },
-          { n: "3", text: "Review the Rules & Safety guidelines and the waiver if you haven't yet." },
-          { n: "4", text: "Pack your tent, sleeping bags, and Shabbos essentials." },
-          { n: "5", text: "See you there! Shabbat Shalom 🌿" },
-        ].map((step) => (
-          <div key={step.n} style={{ display: "flex", gap: "14px", marginBottom: "14px", alignItems: "flex-start" }}>
-            <div
-              style={{
-                width: "28px",
-                height: "28px",
-                borderRadius: "50%",
-                backgroundColor: "#2D5016",
-                color: "#F8F3E9",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                flexShrink: 0,
-              }}
-            >
-              {step.n}
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", marginBottom: "60px", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
+          A confirmation email has been sent with your booking details, directions, and everything you need to know for an amazing Shabbos in nature.
+        </p>
+
+        {/* Steps */}
+        <div style={{ marginBottom: "60px" }}>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "32px" }}>
+            What Happens Next
+          </p>
+          {[
+            "Check your email for booking confirmation and receipt.",
+            "Directions to Shabbos Village are included — one way in, one way out.",
+            "Review the Rules & Safety guidelines and waiver if you haven&apos;t yet.",
+            "Pack your tent, sleeping bags, and Shabbos essentials.",
+            "See you there. Shabbat Shalom.",
+          ].map((step, i) => (
+            <div key={i} style={{ display: "flex", gap: "24px", alignItems: "flex-start", padding: "20px 0", borderBottom: i < 4 ? "1px solid #EDE4D3" : "none" }}>
+              <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontStyle: "italic", color: "#D4A853", minWidth: "24px", paddingTop: "2px" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p style={{ fontSize: "0.97rem", color: "#3a3a2a", lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: step }} />
             </div>
-            <p style={{ fontSize: "0.95rem", color: "#3a3a2a", lineHeight: 1.6, marginTop: "4px" }}>{step.text}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-        <Link href="/" className="btn-primary">Back to Home</Link>
-        <Link href="/rules" className="btn-secondary">Review Rules & Safety</Link>
-      </div>
+        <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+          <Link href="/" style={{ display: "inline-block", backgroundColor: "#2D5016", color: "#FDFAF5", fontWeight: 600, fontSize: "0.88rem", letterSpacing: "0.04em", padding: "13px 32px", borderRadius: "3px", textDecoration: "none" }}>
+            Back to Home
+          </Link>
+          <Link href="/rules" style={{ display: "inline-block", border: "1px solid #EDE4D3", color: "#2D5016", fontWeight: 500, fontSize: "0.88rem", padding: "13px 32px", borderRadius: "3px", textDecoration: "none" }}>
+            Rules & Safety
+          </Link>
+        </div>
 
-      <p style={{ marginTop: "40px", fontSize: "0.9rem", color: "#8B8070" }}>
-        Questions? Email us at{" "}
-        <a href="mailto:info@shabbosvillage.com" style={{ color: "#2D5016", fontWeight: 600 }}>
-          info@shabbosvillage.com
-        </a>
-      </p>
+        <p style={{ marginTop: "48px", fontSize: "0.88rem", color: "#8B8070" }}>
+          Questions?{" "}
+          <a href="mailto:info@shabbosvillage.com" style={{ color: "#2D5016", fontWeight: 600 }}>
+            info@shabbosvillage.com
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

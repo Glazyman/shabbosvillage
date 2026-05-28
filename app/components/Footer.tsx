@@ -2,47 +2,38 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        backgroundColor: "#2D5016",
-        color: "#EDE4D3",
-        padding: "60px 24px 32px",
-      }}
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "48px",
-            marginBottom: "48px",
-          }}
-        >
+    <footer style={{ backgroundColor: "#1a2a0f", color: "#FDFAF5", padding: "80px 60px 40px" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+
+        {/* Top */}
+        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: "60px", marginBottom: "64px" }}>
+
           {/* Brand */}
           <div>
-            <h3
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontSize: "1.5rem",
-                fontWeight: 700,
-                color: "#F8F3E9",
-                marginBottom: "12px",
-              }}
-            >
-              Shabbos Village
-            </h3>
-            <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#b5c9a4", maxWidth: "260px" }}>
+            {/* Tent SVG logo */}
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+              <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 1L27 21H1L14 1Z" stroke="#D4A853" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+                <path d="M14 1L20 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
+                <path d="M14 1L8 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
+                <path d="M9 14H19" stroke="#D4A853" strokeWidth="1" opacity="0.6"/>
+                <rect x="11" y="17" width="6" height="4" stroke="#D4A853" strokeWidth="1" fill="none"/>
+              </svg>
+              <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
+                Shabbos Village
+              </span>
+            </div>
+            <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "240px" }}>
               A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Explore */}
           <div>
-            <h4 style={{ fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.1em",
-                         textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
+            <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
               Explore
-            </h4>
-            <nav style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            </p>
+            <nav style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
                 { href: "/about",  label: "About Us" },
                 { href: "/book",   label: "Book a Stay" },
@@ -50,85 +41,50 @@ export default function Footer() {
                 { href: "/rules",  label: "Rules & Safety" },
                 { href: "/waiver", label: "Hold Harmless" },
               ].map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  style={{
-                    color: "#b5c9a4",
-                    textDecoration: "none",
-                    fontSize: "0.9rem",
-                    transition: "color 0.2s",
-                  }}
-                >
+                <Link key={l.href} href={l.href} style={{ color: "rgba(253,250,245,0.55)", textDecoration: "none", fontSize: "0.88rem", transition: "color 0.2s" }}>
                   {l.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact */}
+          {/* On Site */}
           <div>
-            <h4 style={{ fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.1em",
-                         textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
-              Contact
-            </h4>
-            <p style={{ fontSize: "0.9rem", color: "#b5c9a4", lineHeight: 1.7 }}>
-              Questions? Reach out:<br />
-              <a href="mailto:info@shabbosvillage.com"
-                 style={{ color: "#D4A853", textDecoration: "none" }}>
-                info@shabbosvillage.com
-              </a>
+            <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
+              On Site
             </p>
-            <p style={{ fontSize: "0.9rem", color: "#b5c9a4", marginTop: "12px", lineHeight: 1.7 }}>
-              One way in, one way out.<br />
-              Directions provided upon booking.
-            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {["Tent camping sites", "Electric hookups", "Showers & toilets", "Water stations", "Creek access", "Communal areas"].map((item) => (
+                <span key={item} style={{ fontSize: "0.88rem", color: "rgba(253,250,245,0.55)" }}>{item}</span>
+              ))}
+            </div>
           </div>
 
-          {/* Amenities */}
+          {/* Contact */}
           <div>
-            <h4 style={{ fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.1em",
-                         textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
-              On Site
-            </h4>
-            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-              {[
-                "Tent camping sites",
-                "Electric hookups",
-                "Toilet & showers",
-                "Water stations",
-                "Creek access",
-                "Communal areas",
-              ].map((item) => (
-                <li key={item} style={{ fontSize: "0.9rem", color: "#b5c9a4", display: "flex", gap: "8px" }}>
-                  <span style={{ color: "#D4A853" }}>✦</span> {item}
-                </li>
-              ))}
-            </ul>
+            <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
+              Contact
+            </p>
+            <p style={{ fontSize: "0.88rem", color: "rgba(253,250,245,0.55)", lineHeight: 1.8, marginBottom: "12px" }}>
+              Questions or group bookings:
+            </p>
+            <a href="mailto:info@shabbosvillage.com" style={{ color: "#D4A853", textDecoration: "none", fontSize: "0.88rem" }}>
+              info@shabbosvillage.com
+            </a>
+            <p style={{ fontSize: "0.85rem", color: "rgba(253,250,245,0.4)", marginTop: "16px", lineHeight: 1.7 }}>
+              One way in, one way out.<br />Directions sent after booking.
+            </p>
           </div>
         </div>
 
-        <div
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.1)",
-            paddingTop: "24px",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
-          <p style={{ fontSize: "0.85rem", color: "#7a9e6b" }}>
+        {/* Bottom */}
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+          <p style={{ fontSize: "0.8rem", color: "rgba(253,250,245,0.3)" }}>
             © {new Date().getFullYear()} Shabbos Village. All rights reserved.
           </p>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/waiver" style={{ fontSize: "0.85rem", color: "#7a9e6b", textDecoration: "none" }}>
-              Hold Harmless
-            </Link>
-            <Link href="/rules" style={{ fontSize: "0.85rem", color: "#7a9e6b", textDecoration: "none" }}>
-              Rules & Safety
-            </Link>
+          <div style={{ display: "flex", gap: "28px" }}>
+            <Link href="/waiver" style={{ fontSize: "0.8rem", color: "rgba(253,250,245,0.3)", textDecoration: "none" }}>Hold Harmless</Link>
+            <Link href="/rules" style={{ fontSize: "0.8rem", color: "rgba(253,250,245,0.3)", textDecoration: "none" }}>Rules & Safety</Link>
           </div>
         </div>
       </div>

@@ -48,14 +48,21 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: "none" }}>
+        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+          <svg width="26" height="20" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transition: "opacity 0.4s", opacity: scrolled ? 1 : 0.9 }}>
+            <path d="M14 1L27 21H1L14 1Z" stroke={scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+            <path d="M14 1L19.5 21" stroke={scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.5"/>
+            <path d="M14 1L8.5 21" stroke={scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.5"/>
+            <path d="M9.5 14.5H18.5" stroke={scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.6"/>
+            <rect x="11" y="17" width="6" height="4" stroke={scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" fill="none"/>
+          </svg>
           <span
             style={{
               fontFamily: "var(--font-playfair)",
-              fontSize: "1.1rem",
+              fontSize: "1.05rem",
               fontWeight: 700,
               color: textColor,
-              letterSpacing: "0.01em",
+              letterSpacing: "0.02em",
               transition: "color 0.4s ease",
             }}
           >
