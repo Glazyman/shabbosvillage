@@ -156,10 +156,10 @@ export default function Home() {
           className="amenity-strip"
           style={{
             display: "flex",
-            gap: "40px",
+            gap: "clamp(16px, 2vw, 28px)",
             alignItems: "center",
             justifyContent: "center",
-            padding: "0 40px",
+            padding: "0 clamp(16px, 3vw, 40px)",
             overflowX: "auto",
             flexWrap: "nowrap",
             scrollbarWidth: "none",
@@ -183,9 +183,9 @@ export default function Home() {
                 alignItems: "center",
                 gap: "16px",
                 color: "rgba(253,250,245,0.85)",
-                fontSize: "0.82rem",
+                fontSize: "clamp(0.7rem, 1vw, 0.82rem)",
                 fontWeight: 500,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.05em",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
                 flexShrink: 0,
@@ -201,94 +201,54 @@ export default function Home() {
       </section>
 
       {/* ── EDITORIAL INTRO ── */}
-      <section style={{ backgroundColor: "#FDFAF5", padding: "clamp(56px,8vw,120px) 24px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="editorial-grid">
-            {/* Left — label + large number */}
-            <div className="editorial-num" style={{ paddingTop: "8px" }}>
-              <p
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#8B5E3C",
-                  marginBottom: "24px",
-                }}
-              >
-                About Shabbos Village
-              </p>
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "clamp(5rem, 12vw, 10rem)",
-                  fontWeight: 800,
-                  lineHeight: 1,
-                  color: "transparent",
-                  WebkitTextStroke: "1.5px #EDE4D3",
-                  userSelect: "none",
-                  marginBottom: "40px",
-                }}
-              >
-                01
-              </div>
-              <Link
-                href="/about"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  color: "#2D5016",
-                  fontWeight: 600,
-                  fontSize: "0.9rem",
-                  textDecoration: "none",
-                  letterSpacing: "0.04em",
-                  borderBottom: "1px solid #2D5016",
-                  paddingBottom: "2px",
-                }}
-              >
-                Read our story →
-              </Link>
-            </div>
-
-            {/* Right — text */}
-            <div>
-              <h2
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                  fontWeight: 700,
-                  color: "#1a1a12",
-                  lineHeight: 1.2,
-                  marginBottom: "32px",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Disconnect from the noise.
-                Reconnect with nature,
-                community, and Shabbos.
-              </h2>
-              <p
-                style={{
-                  fontSize: "1.05rem",
-                  lineHeight: 1.9,
-                  color: "#4a4a3a",
-                  marginBottom: "24px",
-                  borderLeft: "2px solid #D4A853",
-                  paddingLeft: "20px",
-                }}
-              >
-                Shabbos Village is a peaceful campground created for families,
-                friends, and individuals who want a truly meaningful Shabbos
-                in nature — tent camping, creek access, communal areas, and
-                a calm, respectful atmosphere.
-              </p>
-              <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#6b6b55" }}>
-                Whether you come for rest, reflection, or simply fresh air —
-                you belong here. One way in, one way out. Simple as that.
-              </p>
-            </div>
-          </div>
+      <section style={{ backgroundColor: "#FDFAF5", padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)" }}>
+        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "#8B5E3C",
+              marginBottom: "28px",
+            }}
+          >
+            About Shabbos Village
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "clamp(2rem, 4vw, 3.2rem)",
+              fontWeight: 700,
+              color: "#1a1a12",
+              lineHeight: 1.2,
+              marginBottom: "32px",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Disconnect from the noise.
+            Reconnect with nature,
+            community, and Shabbos.
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.9,
+              color: "#4a4a3a",
+              marginBottom: "24px",
+              borderLeft: "2px solid #D4A853",
+              paddingLeft: "20px",
+            }}
+          >
+            Shabbos Village is a peaceful campground created for families,
+            friends, and individuals who want a truly meaningful Shabbos
+            in nature — tent camping, creek access, communal areas, and
+            a calm, respectful atmosphere.
+          </p>
+          <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#6b6b55" }}>
+            Whether you come for rest, reflection, or simply fresh air —
+            you belong here. One way in, one way out. Simple as that.
+          </p>
         </div>
       </section>
 
