@@ -15,7 +15,7 @@ export default function AboutPage() {
           priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,20,8,0.5) 0%, rgba(10,20,8,0.65) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
+        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
             About
           </p>
@@ -26,9 +26,9 @@ export default function AboutPage() {
       </section>
 
       {/* ── MISSION ── */}
-      <section style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
-          <div>
+      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="editorial-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
+          <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
               Our Mission
             </p>
@@ -54,9 +54,9 @@ export default function AboutPage() {
       <div style={{ borderTop: "1px solid #EDE4D3", margin: "0 60px" }} />
 
       {/* ── WHAT TO EXPECT ── */}
-      <section style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
-          <div>
+      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="editorial-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
+          <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
               The Experience
             </p>
@@ -111,9 +111,9 @@ export default function AboutPage() {
       </section>
 
       {/* ── GROUPS ── */}
-      <section style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
-          <div>
+      <section className="pg-section" style={{ padding: "120px 60px", maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="editorial-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px", alignItems: "start" }}>
+          <div className="editorial-num">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
               Beyond Shabbos
             </p>
@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ backgroundColor: "#1a2a0f", padding: "100px 60px", textAlign: "center" }}>
+      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "100px 60px", textAlign: "center" }}>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D4A853", marginBottom: "20px" }}>
           Ready to come?
         </p>

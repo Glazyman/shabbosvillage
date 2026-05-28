@@ -159,6 +159,7 @@ export default function Home() {
         }}
       >
         <div
+          className="amenity-strip"
           style={{
             display: "flex",
             gap: "48px",
@@ -205,6 +206,7 @@ export default function Home() {
       <section style={{ backgroundColor: "#FDFAF5", padding: "120px 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div
+            className="editorial-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1.4fr",
@@ -213,7 +215,7 @@ export default function Home() {
             }}
           >
             {/* Left — label + large number */}
-            <div style={{ paddingTop: "8px" }}>
+            <div className="editorial-num" style={{ paddingTop: "8px" }}>
               <p
                 style={{
                   fontSize: "0.75rem",
@@ -303,17 +305,17 @@ export default function Home() {
       {/* ── PHOTO + STEPS ── */}
       <section style={{ backgroundColor: "#F8F3E9" }}>
         <div
+          className="split-grid"
           style={{
             maxWidth: "1100px",
             margin: "0 auto",
-            padding: "0 24px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "0",
           }}
         >
           {/* Photo */}
           <div
+            className="split-photo"
             style={{
               position: "relative",
               height: "600px",
@@ -330,6 +332,7 @@ export default function Home() {
 
           {/* Steps */}
           <div
+            className="split-content"
             style={{
               padding: "80px 60px",
               display: "flex",
@@ -515,6 +518,7 @@ export default function Home() {
           </div>
 
           <div
+            className="events-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
@@ -571,6 +575,7 @@ export default function Home() {
 
       {/* ── FINAL CTA ── */}
       <section
+        className="cta-section"
         style={{
           backgroundColor: "#1a2a0f",
           padding: "120px 24px",

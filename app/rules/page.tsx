@@ -60,7 +60,7 @@ export default function RulesPage() {
           priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,20,8,0.4) 0%, rgba(10,20,8,0.72) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
+        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
             Community Guidelines
           </p>
@@ -100,7 +100,7 @@ export default function RulesPage() {
                 {section.title}
               </h2>
             </div>
-            <div style={{ paddingLeft: "100px" }}>
+            <div className="rules-indent" style={{ paddingLeft: "100px" }}>
               {section.items.map((item, i) => (
                 <div key={item} style={{ display: "flex", gap: "20px", alignItems: "flex-start", padding: "18px 0", borderBottom: i < section.items.length - 1 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ color: "#D4A853", fontSize: "0.5rem", marginTop: "7px", flexShrink: 0 }}>◆</span>
@@ -113,7 +113,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── COMMUNITY NOTE ── */}
-      <section style={{ backgroundColor: "#1a2a0f", padding: "100px 60px" }}>
+      <section className="cta-section" style={{ backgroundColor: "#1a2a0f", padding: "100px 60px" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "24px" }}>
             Our Commitment
