@@ -150,24 +150,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TICKER / AMENITIES STRIP ── */}
-      <section
-        style={{
-          backgroundColor: "#2D5016",
-          padding: "18px 0",
-          overflow: "hidden",
-        }}
-      >
+      {/* ── AMENITIES STRIP ── */}
+      <section style={{ backgroundColor: "#2D5016", padding: "18px 0" }}>
         <div
           className="amenity-strip"
           style={{
             display: "flex",
-            gap: "48px",
+            gap: "40px",
             alignItems: "center",
             justifyContent: "center",
-            flexWrap: "wrap",
             padding: "0 40px",
-          }}
+            overflowX: "auto",
+            flexWrap: "nowrap",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          } as React.CSSProperties}
         >
           {[
             "Tent Camping",
@@ -178,7 +175,7 @@ export default function Home() {
             "Communal Gathering",
             "Family Friendly",
             "Water Stations",
-          ].map((item, i) => (
+          ].map((item, i, arr) => (
             <span
               key={item}
               style={{
@@ -191,10 +188,11 @@ export default function Home() {
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               {item}
-              {i < 7 && (
+              {i < arr.length - 1 && (
                 <span style={{ color: "#D4A853", fontSize: "0.5rem" }}>◆</span>
               )}
             </span>
