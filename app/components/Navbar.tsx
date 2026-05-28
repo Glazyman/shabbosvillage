@@ -46,7 +46,7 @@ export default function Navbar() {
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: "0 40px",
+            padding: "0 clamp(20px, 5vw, 40px)",
             height: scrolled ? "64px" : "80px",
             display: "flex",
             alignItems: "center",
@@ -104,14 +104,17 @@ export default function Navbar() {
           backgroundColor: "#FDFAF5",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          padding: "0 48px",
+          overflowY: "auto",
           opacity: open ? 1 : 0,
           pointerEvents: open ? "all" : "none",
-          transition: "opacity 0.4s ease",
+          transition: "opacity 0.35s ease",
         }}
       >
-        <nav style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {/* Spacer for the header bar */}
+        <div style={{ height: "80px", flexShrink: 0 }} />
+
+        {/* Links */}
+        <nav style={{ flex: 1, display: "flex", flexDirection: "column", padding: "32px 32px 0" }}>
           {links.map((l, i) => (
             <Link
               key={l.href}
@@ -119,32 +122,44 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               style={{
                 fontFamily: "var(--font-playfair)",
-                fontSize: "clamp(2rem, 8vw, 3.5rem)",
+                fontSize: "clamp(1.6rem, 6vw, 2.4rem)",
                 fontWeight: 700,
                 color: "#1a1a12",
                 textDecoration: "none",
-                lineHeight: 1.3,
+                lineHeight: 1.2,
                 letterSpacing: "-0.01em",
-                transition: `opacity 0.4s ease ${i * 0.06}s, transform 0.4s ease ${i * 0.06}s`,
+                padding: "18px 0",
+                borderBottom: "1px solid #EDE4D3",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                transition: `opacity 0.35s ease ${i * 0.05}s, transform 0.35s ease ${i * 0.05}s`,
                 opacity: open ? 1 : 0,
-                transform: open ? "translateX(0)" : "translateX(-20px)",
-                display: "block",
+                transform: open ? "translateX(0)" : "translateX(-16px)",
               }}
             >
               {l.label}
+              <span style={{ color: "#D4A853", fontSize: "1rem", fontStyle: "italic", fontWeight: 400, letterSpacing: 0 }}>→</span>
             </Link>
           ))}
         </nav>
 
-        <div style={{ marginTop: "48px", borderTop: "1px solid #EDE4D3", paddingTop: "32px" }}>
+        {/* Bottom CTA */}
+        <div
+          style={{
+            padding: "32px",
+            transition: `opacity 0.35s ease ${links.length * 0.05 + 0.05}s`,
+            opacity: open ? 1 : 0,
+          }}
+        >
           <Link
             href="/book"
             onClick={() => setOpen(false)}
-            style={{ display: "inline-block", backgroundColor: "#2D5016", color: "#FDFAF5", fontWeight: 700, fontSize: "0.88rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "15px 36px", borderRadius: "3px", textDecoration: "none" }}
+            style={{ display: "block", backgroundColor: "#2D5016", color: "#FDFAF5", fontWeight: 700, fontSize: "0.88rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "16px", borderRadius: "3px", textDecoration: "none", textAlign: "center" }}
           >
             Reserve Now
           </Link>
-          <p style={{ marginTop: "20px", fontSize: "0.82rem", color: "#8B8070" }}>
+          <p style={{ marginTop: "16px", fontSize: "0.8rem", color: "#8B8070", textAlign: "center" }}>
             info@shabbosvillage.com
           </p>
         </div>
