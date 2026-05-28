@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,17 +8,14 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand" style={{ marginBottom: "48px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-            <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 1L27 21H1L14 1Z" stroke="#D4A853" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
-              <path d="M14 1L20 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
-              <path d="M14 1L8 21" stroke="#D4A853" strokeWidth="1" opacity="0.5"/>
-              <path d="M9 14H19" stroke="#D4A853" strokeWidth="1" opacity="0.6"/>
-              <rect x="11" y="17" width="6" height="4" stroke="#D4A853" strokeWidth="1" fill="none"/>
-            </svg>
-            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
-              Shabbos Village
-            </span>
+          <div style={{ marginBottom: "16px" }}>
+            <Image
+              src="/logo.png"
+              alt="Shabbos Village"
+              width={88}
+              height={88}
+              style={{ objectFit: "contain", borderRadius: "8px" }}
+            />
           </div>
           <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "280px" }}>
             A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
