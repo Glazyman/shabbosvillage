@@ -35,11 +35,12 @@ export default function Footer() {
             </p>
             <nav style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                { href: "/about",  label: "About Us" },
-                { href: "/book",   label: "Book a Stay" },
-                { href: "/faq",    label: "FAQ" },
-                { href: "/rules",  label: "Rules & Safety" },
-                { href: "/waiver", label: "Hold Harmless" },
+                { href: "/about",   label: "About Us" },
+                { href: "/gallery", label: "Gallery" },
+                { href: "/book",    label: "Book a Stay" },
+                { href: "/faq",     label: "FAQ" },
+                { href: "/rules",   label: "Rules & Safety" },
+                { href: "/waiver",  label: "Hold Harmless" },
               ].map((l) => (
                 <Link key={l.href} href={l.href} style={{ color: "rgba(253,250,245,0.55)", textDecoration: "none", fontSize: "0.88rem", transition: "color 0.2s" }}>
                   {l.label}

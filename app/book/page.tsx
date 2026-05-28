@@ -17,6 +17,7 @@ type FormData = {
   groupType: string;
   notes: string;
   waiverSigned: boolean;
+  waiverSignature: string;
 };
 
 const initialForm: FormData = {
@@ -24,6 +25,7 @@ const initialForm: FormData = {
   arrivalDate: "", departureDate: "", guests: "1",
   vehicles: "1", tentType: "standard", hookup: "no",
   groupType: "family", notes: "", waiverSigned: false,
+  waiverSignature: "",
 };
 
 const PRICING = { base: 45, hookup: 20, perGuest: 15, perVehicle: 10 };
@@ -54,7 +56,8 @@ export default function BookPage() {
   const { total, nights } = calcTotal(form);
 
   const handleCheckout = async () => {
-    if (!form.waiverSigned) { setError("Please agree to the hold harmless waiver before proceeding."); return; }
+    if (!form.waiverSignature.trim()) { setError("Please type your name as a signature before proceeding."); return; }
+    if (!form.waiverSigned) { setError("Please check the agreement box before proceeding."); return; }
     setLoading(true); setError("");
     try {
       const res = await fetch("/api/create-checkout-session", {
@@ -266,18 +269,54 @@ export default function BookPage() {
               </p>
             </div>
 
-            {/* Waiver */}
-            <div style={{ borderTop: "2px solid #EDE4D3", paddingTop: "28px", marginBottom: "32px" }}>
+            {/* Inline Waiver Signing */}
+            <div style={{ borderTop: "2px solid #EDE4D3", paddingTop: "32px", marginBottom: "32px" }}>
+              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "16px" }}>
+                Electronic Agreement
+              </p>
+
+              {/* Scrollable waiver summary */}
+              <div style={{ border: "1px solid #EDE4D3", borderRadius: "3px", padding: "20px 24px", maxHeight: "180px", overflowY: "auto", backgroundColor: "#F8F3E9", marginBottom: "20px" }}>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#4a4a3a", marginBottom: "12px" }}>
+                  By signing below, I acknowledge and agree to the full terms of the{" "}
+                  <Link href="/waiver" target="_blank" style={{ color: "#2D5016", fontWeight: 700, textDecoration: "underline" }}>Hold Harmless Agreement</Link>
+                  {" "}and the{" "}
+                  <Link href="/rules" target="_blank" style={{ color: "#2D5016", fontWeight: 700, textDecoration: "underline" }}>Campground Rules & Safety Guidelines</Link>.
+                </p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#4a4a3a", marginBottom: "12px" }}>
+                  I voluntarily assume all risks associated with camping and outdoor activities, including uneven terrain, wildlife, weather conditions, water areas, and other natural hazards. I release and hold harmless Shabbos Village, its owners, operators, and agents from any claims arising from my presence on the property.
+                </p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#4a4a3a" }}>
+                  I accept full responsibility for myself and all members of my party, including minors. I understand that management may require any guest to leave if conduct violates campground rules.
+                </p>
+              </div>
+
+              {/* Signature field */}
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ ...labelStyle, marginBottom: "8px" }}>Type Your Full Name as Signature</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  value={form.waiverSignature}
+                  onChange={(e) => setForm((p) => ({ ...p, waiverSignature: e.target.value }))}
+                  placeholder={`${form.firstName || "Your"} ${form.lastName || "Name"}`}
+                  style={{ fontFamily: "Georgia, serif", fontSize: "1.05rem", fontStyle: "italic" }}
+                />
+                <p style={{ fontSize: "0.75rem", color: "#8B8070", marginTop: "6px" }}>
+                  Signed on {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                </p>
+              </div>
+
               <label style={{ display: "flex", gap: "14px", alignItems: "flex-start", cursor: "pointer" }}>
                 <input type="checkbox" checked={form.waiverSigned}
                   onChange={(e) => setForm((p) => ({ ...p, waiverSigned: e.target.checked }))}
                   style={{ width: "18px", height: "18px", marginTop: "3px", accentColor: "#2D5016" }} />
-                <span style={{ fontSize: "0.9rem", color: "#3a3a2a", lineHeight: 1.7 }}>
-                  I have read and agree to the{" "}
-                  <Link href="/waiver" target="_blank" style={{ color: "#2D5016", fontWeight: 600 }}>Hold Harmless Waiver</Link>
+                <span style={{ fontSize: "0.88rem", color: "#3a3a2a", lineHeight: 1.7 }}>
+                  I have read and fully understand the{" "}
+                  <Link href="/waiver" target="_blank" style={{ color: "#2D5016", fontWeight: 700, textDecoration: "underline" }}>Hold Harmless Agreement</Link>
                   {" "}and the{" "}
-                  <Link href="/rules" target="_blank" style={{ color: "#2D5016", fontWeight: 600 }}>Campground Rules</Link>.
-                  I assume responsibility for myself and my guests.
+                  <Link href="/rules" target="_blank" style={{ color: "#2D5016", fontWeight: 700, textDecoration: "underline" }}>Campground Rules</Link>.
+                  {" "}I agree on behalf of myself and all members of my party.
                 </span>
               </label>
             </div>
