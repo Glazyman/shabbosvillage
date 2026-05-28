@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const links = [
   { href: "/about",   label: "About" },
@@ -56,15 +55,24 @@ export default function Navbar() {
           }}
         >
           {/* Logo — left */}
-          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", zIndex: 110 }}>
-            <Image
-              src="/logo.png"
-              alt="Shabbos Village"
-              width={56}
-              height={56}
-              priority
-              style={{ objectFit: "contain", borderRadius: "6px" }}
-            />
+          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px", zIndex: 110 }}>
+            <svg width="18" height="30" viewBox="0 0 28 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="1.5" r="1.5" fill={open || scrolled ? "#2D5016" : "#D4A853"}/>
+              <line x1="14" y1="3" x2="14" y2="6.5" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M6 12 L14 6.5 L22 12" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.3" strokeLinejoin="round" fill="none"/>
+              <rect x="5" y="12" width="18" height="1.5" fill={open || scrolled ? "#2D5016" : "#D4A853"}/>
+              <rect x="5" y="13.5" width="18" height="17" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.3" fill="none"/>
+              <line x1="14" y1="13.5" x2="14" y2="30.5" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="0.7" strokeOpacity="0.5"/>
+              <line x1="5" y1="22" x2="23" y2="22" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="0.7" strokeOpacity="0.5"/>
+              <ellipse cx="14" cy="26" rx="2.5" ry="3" fill={open || scrolled ? "#2D5016" : "#D4A853"} fillOpacity="0.22"/>
+              <rect x="5" y="30.5" width="18" height="1.5" fill={open || scrolled ? "#2D5016" : "#D4A853"}/>
+              <line x1="14" y1="30.5" x2="14" y2="44" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.8" strokeLinecap="round"/>
+              <path d="M14 33 C10 33 6 35 7 39" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.1" fill="none" strokeLinecap="round"/>
+              <path d="M14 33 C18 33 22 35 21 39" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.1" fill="none" strokeLinecap="round"/>
+            </svg>
+            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.05rem", fontWeight: 700, color: textColor, letterSpacing: "0.02em", transition: "color 0.4s ease" }}>
+              Shabbos Village
+            </span>
           </Link>
 
           {/* Desktop links — center */}

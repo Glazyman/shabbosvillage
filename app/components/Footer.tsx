@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,14 +7,24 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand" style={{ marginBottom: "48px" }}>
-          <div style={{ marginBottom: "16px" }}>
-            <Image
-              src="/logo.png"
-              alt="Shabbos Village"
-              width={88}
-              height={88}
-              style={{ objectFit: "contain", borderRadius: "8px" }}
-            />
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <svg width="22" height="36" viewBox="0 0 28 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="1.5" r="1.5" fill="#D4A853"/>
+              <line x1="14" y1="3" x2="14" y2="6.5" stroke="#D4A853" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M6 12 L14 6.5 L22 12" stroke="#D4A853" strokeWidth="1.3" strokeLinejoin="round" fill="none"/>
+              <rect x="5" y="12" width="18" height="1.5" fill="#D4A853"/>
+              <rect x="5" y="13.5" width="18" height="17" stroke="#D4A853" strokeWidth="1.3" fill="none"/>
+              <line x1="14" y1="13.5" x2="14" y2="30.5" stroke="#D4A853" strokeWidth="0.7" strokeOpacity="0.5"/>
+              <line x1="5" y1="22" x2="23" y2="22" stroke="#D4A853" strokeWidth="0.7" strokeOpacity="0.5"/>
+              <ellipse cx="14" cy="26" rx="2.5" ry="3" fill="#D4A853" fillOpacity="0.3"/>
+              <rect x="5" y="30.5" width="18" height="1.5" fill="#D4A853"/>
+              <line x1="14" y1="30.5" x2="14" y2="44" stroke="#D4A853" strokeWidth="1.8" strokeLinecap="round"/>
+              <path d="M14 33 C10 33 6 35 7 39" stroke="#D4A853" strokeWidth="1.1" fill="none" strokeLinecap="round"/>
+              <path d="M14 33 C18 33 22 35 21 39" stroke="#D4A853" strokeWidth="1.1" fill="none" strokeLinecap="round"/>
+            </svg>
+            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
+              Shabbos Village
+            </span>
           </div>
           <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "280px" }}>
             A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
