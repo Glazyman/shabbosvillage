@@ -68,22 +68,9 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop links */}
-          <div style={{ display: "flex", alignItems: "center", gap: "40px" }} className="hidden md:flex">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: textColor, fontWeight: 500, fontSize: "0.82rem", letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", opacity: 0.85, transition: "opacity 0.2s" }}>
-                {l.label}
-              </Link>
-            ))}
-            <Link href="/book" style={{ display: "inline-block", backgroundColor: scrolled ? "#2D5016" : "rgba(255,255,255,0.14)", border: scrolled ? "none" : "1px solid rgba(255,255,255,0.45)", backdropFilter: "blur(4px)", color: "#FDFAF5", fontWeight: 600, fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", borderRadius: "3px", textDecoration: "none", transition: "all 0.3s" }}>
-              Reserve
-            </Link>
-          </div>
-
-          {/* Hamburger — 3 lines that morph to X */}
+          {/* Hamburger — always visible */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden"
             style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, display: "flex", flexDirection: "column", justifyContent: "center", gap: "6px", width: "36px", height: "36px" }}
             aria-label="Toggle menu"
           >
@@ -94,9 +81,8 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Full-screen mobile overlay */}
+      {/* Full-screen overlay */}
       <div
-        className="md:hidden"
         style={{
           position: "fixed",
           inset: 0,
