@@ -69,7 +69,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ display: "flex", alignItems: "center", gap: "40px" }}>
+          <div className="nav-desktop">
             {links.map((l) => (
               <Link key={l.href} href={l.href} style={{ color: textColor, fontWeight: 500, fontSize: "0.82rem", letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", opacity: 0.85, transition: "opacity 0.2s" }}>
                 {l.label}
@@ -83,8 +83,8 @@ export default function Navbar() {
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden"
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, display: "flex", flexDirection: "column", justifyContent: "center", gap: "6px", width: "36px", height: "36px" }}
+            className="nav-hamburger"
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, width: "36px", height: "36px" }}
             aria-label="Toggle menu"
           >
             <span style={{ display: "block", width: open ? "22px" : "22px", height: "1.5px", backgroundColor: open ? "#1a1a12" : textColor, transition: "all 0.35s", transform: open ? "translateY(7.5px) rotate(45deg)" : "none" }} />
@@ -96,13 +96,12 @@ export default function Navbar() {
 
       {/* Full-screen mobile overlay */}
       <div
-        className="md:hidden"
+        className="nav-overlay"
         style={{
           position: "fixed",
           inset: 0,
           zIndex: 90,
           backgroundColor: "#FDFAF5",
-          display: "flex",
           flexDirection: "column",
           overflowY: "auto",
           opacity: open ? 1 : 0,

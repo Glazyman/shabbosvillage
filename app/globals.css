@@ -141,6 +141,17 @@ body {
   gap: 12px;
 }
 
+/* ── NAVBAR RESPONSIVE ── */
+.nav-desktop   { display: flex; align-items: center; gap: 40px; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; }
+.nav-overlay   { display: none; }
+
+@media (max-width: 768px) {
+  .nav-desktop   { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+  .nav-overlay   { display: flex !important; }
+}
+
 /* ── GALLERY ── */
 .gallery-grid {
   display: grid;
