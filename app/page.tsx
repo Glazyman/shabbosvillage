@@ -205,15 +205,7 @@ export default function Home() {
       {/* ── EDITORIAL INTRO ── */}
       <section style={{ backgroundColor: "#FDFAF5", padding: "120px 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div
-            className="editorial-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1.4fr",
-              gap: "100px",
-              alignItems: "start",
-            }}
-          >
+          <div className="editorial-grid">
             {/* Left — label + large number */}
             <div className="editorial-num" style={{ paddingTop: "8px" }}>
               <p
@@ -306,12 +298,7 @@ export default function Home() {
       <section style={{ backgroundColor: "#F8F3E9" }}>
         <div
           className="split-grid"
-          style={{
-            maxWidth: "1100px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-          }}
+          style={{ maxWidth: "1100px", margin: "0 auto" }}
         >
           {/* Photo */}
           <div
@@ -519,13 +506,7 @@ export default function Home() {
 
           <div
             className="events-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1px",
-              backgroundColor: "#EDE4D3",
-              border: "1px solid #EDE4D3",
-            }}
+            style={{ backgroundColor: "#EDE4D3", border: "1px solid #EDE4D3" }}
           >
             {[
               { title: "Private Group Bookings", desc: "Reserve the entire village exclusively for your group or organization — full privacy, full peace." },

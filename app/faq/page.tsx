@@ -36,7 +36,7 @@ export default function FAQPage() {
           priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,20,8,0.5) 0%, rgba(10,20,8,0.7) 100%)" }} />
-        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
+        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
             Questions
           </p>
@@ -79,7 +79,7 @@ export default function FAQPage() {
                 </span>
               </button>
               {open === i && (
-                <div className="faq-answer" style={{ padding: "0 0 32px 52px" }}>
+                <div className="faq-answer" style={{ paddingBottom: "32px" }}>
                   <p style={{ fontSize: "0.97rem", lineHeight: 1.85, color: "#4a4a3a" }}>{faq.a}</p>
                 </div>
               )}

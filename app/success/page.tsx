@@ -1,6 +1,29 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 
-export default function SuccessPage() {
+function SuccessContent() {
+  const params = useSearchParams();
+  const sessionId = params.get("session_id") ?? "";
+  const didSend = useRef(false);
+
+  useEffect(() => {
+    if (!sessionId || didSend.current) return;
+    // Guard against duplicate sends on StrictMode double-invoke or page refresh
+    const key = `email_sent_${sessionId}`;
+    if (sessionStorage.getItem(key)) return;
+    didSend.current = true;
+    sessionStorage.setItem(key, "1");
+
+    fetch("/api/send-confirmation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId }),
+    }).catch(console.error);
+  }, [sessionId]);
+
   return (
     <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}>
       <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 40px" }}>
@@ -19,7 +42,7 @@ export default function SuccessPage() {
         </h1>
 
         <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", marginBottom: "60px", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
-          A confirmation email has been sent with your booking details, directions, and everything you need to know for an amazing Shabbos in nature.
+          A confirmation email has been sent to you and the campground. Directions will be provided separately before your arrival.
         </p>
 
         {/* Steps */}
@@ -29,16 +52,16 @@ export default function SuccessPage() {
           </p>
           {[
             "Check your email for booking confirmation and receipt.",
-            "Directions to Shabbos Village are included — one way in, one way out.",
-            "Review the Rules & Safety guidelines and waiver if you haven&apos;t yet.",
-            "Pack your tent, sleeping bags, and Shabbos essentials.",
+            "Directions to Shabbos Village are sent separately — one way in, one way out.",
+            "Review the Rules & Safety guidelines before arriving.",
+            "Pack your tent, sleeping bags, and Shabbos essentials (candles, challah, wine).",
             "See you there. Shabbat Shalom.",
           ].map((step, i) => (
             <div key={i} style={{ display: "flex", gap: "24px", alignItems: "flex-start", padding: "20px 0", borderBottom: i < 4 ? "1px solid #EDE4D3" : "none" }}>
               <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontStyle: "italic", color: "#D4A853", minWidth: "24px", paddingTop: "2px" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p style={{ fontSize: "0.97rem", color: "#3a3a2a", lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: step }} />
+              <p style={{ fontSize: "0.97rem", color: "#3a3a2a", lineHeight: 1.7 }}>{step}</p>
             </div>
           ))}
         </div>
@@ -60,5 +83,17 @@ export default function SuccessPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ backgroundColor: "#FDFAF5", minHeight: "100vh", paddingTop: "140px", display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
+        <p style={{ color: "#8B8070", fontSize: "0.9rem", padding: "0 40px" }}>Loading confirmation...</p>
+      </div>
+    }>
+      <SuccessContent />
+    </Suspense>
   );
 }

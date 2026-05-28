@@ -129,6 +129,11 @@ body {
   gap: 40px;
 }
 
+/* FAQ answer indent (base) */
+.faq-answer {
+  padding-left: 52px;
+}
+
 /* Summary review rows */
 .summary-grid {
   display: grid;

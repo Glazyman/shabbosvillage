@@ -85,7 +85,7 @@ export default function BookPage() {
           priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,20,8,0.4) 0%, rgba(10,20,8,0.75) 100%)" }} />
-        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 60px 60px" }}>
+        <div className="hero-text-bottom" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4A853", marginBottom: "16px" }}>
             Reservations
           </p>
@@ -128,7 +128,7 @@ export default function BookPage() {
               We&apos;ll use this to confirm your booking and send directions.
             </p>
 
-            <div className="form-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
+            <div className="form-two-col" style={{ marginBottom: "20px" }}>
               <div>
                 <label style={labelStyle}>First Name</label>
                 <input className="form-input" type="text" value={form.firstName} onChange={set("firstName")} placeholder="Moshe" />
@@ -177,7 +177,7 @@ export default function BookPage() {
               Choose your dates and tell us what you&apos;re bringing.
             </p>
 
-            <div className="form-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
+            <div className="form-two-col" style={{ marginBottom: "20px" }}>
               <div>
                 <label style={labelStyle}>Arrival Date (Friday)</label>
                 <input className="form-input" type="date" value={form.arrivalDate} onChange={set("arrivalDate")} />
@@ -340,7 +340,7 @@ export default function BookPage() {
 
         {/* Side info — only on step 1 & 2 */}
         {step < 3 && (
-          <div className="booking-info-strip" style={{ marginTop: "80px", borderTop: "1px solid #EDE4D3", paddingTop: "48px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
+          <div className="booking-info-strip" style={{ marginTop: "80px", borderTop: "1px solid #EDE4D3", paddingTop: "48px" }}>
             {[
               { label: "Directions", desc: "Provided after booking confirmation. One way in, one way out." },
               { label: "Questions?", desc: "Email info@shabbosvillage.com — we reply quickly." },
