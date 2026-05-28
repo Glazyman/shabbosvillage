@@ -91,20 +91,22 @@ export default function RulesPage() {
       {/* ── RULES SECTIONS ── */}
       <section style={{ maxWidth: "1000px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px)" }}>
         {sections.map((section, si) => (
-          <div key={section.title} style={{ marginBottom: si < sections.length - 1 ? "80px" : "0" }}>
-            <div style={{ display: "flex", gap: "40px", alignItems: "baseline", marginBottom: "40px" }}>
-              <span style={{ fontFamily: "var(--font-playfair)", fontSize: "3.5rem", fontWeight: 800, color: "transparent", WebkitTextStroke: "1px #EDE4D3", lineHeight: 1, userSelect: "none", minWidth: "60px" }}>
+          <div key={section.title} style={{ marginBottom: si < sections.length - 1 ? "clamp(48px,7vw,80px)" : "0" }}>
+            {/* Section header */}
+            <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "28px", paddingBottom: "20px", borderBottom: "2px solid #EDE4D3" }}>
+              <span style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.4rem,4vw,3.5rem)", fontWeight: 800, color: "transparent", WebkitTextStroke: "1px #D4A853", lineHeight: 1, userSelect: "none", flexShrink: 0 }}>
                 {String(si + 1).padStart(2, "0")}
               </span>
-              <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", fontWeight: 700, color: "#1a1a12" }}>
+              <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.1rem,3vw,1.5rem)", fontWeight: 700, color: "#1a1a12", margin: 0 }}>
                 {section.title}
               </h2>
             </div>
-            <div className="rules-indent" style={{ paddingLeft: "clamp(0px,9vw,100px)" }}>
+            {/* Items */}
+            <div>
               {section.items.map((item, i) => (
-                <div key={item} style={{ display: "flex", gap: "20px", alignItems: "flex-start", padding: "18px 0", borderBottom: i < section.items.length - 1 ? "1px solid #EDE4D3" : "none" }}>
+                <div key={item} style={{ display: "flex", gap: "16px", alignItems: "flex-start", padding: "16px 0", borderBottom: i < section.items.length - 1 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ color: "#D4A853", fontSize: "0.5rem", marginTop: "7px", flexShrink: 0 }}>◆</span>
-                  <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "#3a3a2a" }}>{item}</p>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "#3a3a2a", margin: 0 }}>{item}</p>
                 </div>
               ))}
             </div>
