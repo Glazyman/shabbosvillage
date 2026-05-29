@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/about",   label: "About" },
@@ -55,17 +56,15 @@ export default function Navbar() {
           }}
         >
           {/* Logo — left */}
-          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px", zIndex: 110 }}>
-            <svg width="26" height="20" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 1L27 21H1L14 1Z" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
-              <path d="M14 1L19.5 21" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.5"/>
-              <path d="M14 1L8.5 21" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.5"/>
-              <path d="M9.5 14.5H18.5" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" opacity="0.6"/>
-              <rect x="11" y="17" width="6" height="4" stroke={open || scrolled ? "#2D5016" : "#D4A853"} strokeWidth="1" fill="none"/>
-            </svg>
-            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.05rem", fontWeight: 700, color: textColor, letterSpacing: "0.02em", transition: "color 0.4s ease" }}>
-              Shabbos Village
-            </span>
+          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", zIndex: 110 }}>
+            <Image
+              src="/logo.png"
+              alt="Shabbos Village"
+              width={56}
+              height={56}
+              priority
+              style={{ objectFit: "contain", borderRadius: "6px" }}
+            />
           </Link>
 
           {/* Desktop links — center */}
