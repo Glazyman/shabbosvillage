@@ -172,10 +172,9 @@ export default function Home() {
             "Showers & Toilets",
             "Creek Access",
             "Nature Trails",
-            "Communal Gathering",
+            "Communal Areas",
             "Family Friendly",
-            "Water Stations",
-            "Motzei Shabbos Food Court",
+            "Food Court",
           ].map((item, i, arr) => (
             <span
               key={item}
@@ -509,6 +508,110 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MOTZEI SHABBOS / FOOD COURT ── */}
+      <section style={{ backgroundColor: "#F8F3E9" }}>
+        <div
+          className="split-grid"
+          style={{ maxWidth: "1100px", margin: "0 auto" }}
+        >
+          {/* Text — LEFT */}
+          <div
+            className="split-content"
+            style={{
+              padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              order: -1,
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#8B5E3C",
+                marginBottom: "16px",
+              }}
+            >
+              Motzei Shabbos
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 700,
+                color: "#1a1a12",
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+                marginBottom: "28px",
+              }}
+            >
+              When Shabbos ends,
+              <br />
+              <em style={{ fontStyle: "italic", color: "#2D5016" }}>the fun begins.</em>
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.9,
+                color: "#4a4a3a",
+                marginBottom: "32px",
+                borderLeft: "2px solid #D4A853",
+                paddingLeft: "20px",
+              }}
+            >
+              As the stars come out, our on-site food court comes alive — pizza fresh from the oven, bakery sandwiches, sushi, and more. Grab a bite, hang out with friends, and keep the night going under the open sky.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {[
+                { icon: "🍕", label: "Pizza" },
+                { icon: "🥪", label: "Bakery & Sandwiches" },
+                { icon: "🍣", label: "Sushi" },
+                { icon: "🏐", label: "Volleyball & Hangout" },
+              ].map((item, i) => (
+                <div
+                  key={item.label}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                    padding: "14px 0",
+                    borderBottom: i < 3 ? "1px solid #EDE4D3" : "none",
+                  }}
+                >
+                  <span style={{ fontSize: "1.1rem" }}>{item.icon}</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-playfair)",
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                      color: "#2D5016",
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Photo — RIGHT */}
+          <div
+            className="split-photo"
+            style={{ position: "relative", height: "600px", overflow: "hidden" }}
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=85"
+              alt="Outdoor food court and dining"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
           </div>
         </div>
       </section>
