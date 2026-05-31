@@ -76,8 +76,9 @@ export default function AboutPage() {
                 { title: "Electric hookups", desc: "Available at select sites for an additional fee." },
                 { title: "Water stations", desc: "Central water access throughout the property." },
                 { title: "Gathering areas", desc: "Communal spaces for shared meals, conversation, and connection." },
+                { title: "Food storage station", desc: "A shared trailer with warmers and freezers where tent campers store all food. Everything is locked in securely overnight." },
               ].map((item, i) => (
-                <div key={item.title} style={{ display: "flex", gap: "32px", alignItems: "flex-start", padding: "28px 0", borderBottom: i < 5 ? "1px solid #EDE4D3" : "none" }}>
+                <div key={item.title} style={{ display: "flex", gap: "32px", alignItems: "flex-start", padding: "28px 0", borderBottom: i < 6 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontStyle: "italic", color: "#D4A853", minWidth: "24px", paddingTop: "2px" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -110,6 +111,51 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── MOTZEI SHABBOS ── */}
+      <section className="pg-section" style={{ padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)", maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="editorial-grid">
+          <div className="editorial-num">
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "24px" }}>
+              Motzei Shabbos
+            </p>
+            <div style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(5rem, 12vw, 9rem)", fontWeight: 800, lineHeight: 1, color: "transparent", WebkitTextStroke: "1.5px #EDE4D3", userSelect: "none" }}>
+              03
+            </div>
+          </div>
+          <div style={{ paddingTop: "12px" }}>
+            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, color: "#1a1a12", lineHeight: 1.25, marginBottom: "28px", letterSpacing: "-0.01em" }}>
+              When Shabbos ends, the fun begins
+            </h2>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#4a4a3a", marginBottom: "20px", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
+              On Motzei Shabbos, our food court comes alive — right on site. Think pizza fresh out of the oven, bakery sandwiches, sushi, and more. Grab a bite, hang out with friends, and enjoy the night under the stars.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#6b6b55", marginBottom: "40px" }}>
+              There&apos;s also a volleyball area and communal hangout space, so the energy keeps going long after Havdalah.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {[
+                { title: "Food court", desc: "Pizza, bakery sandwiches, sushi, and more — available Motzei Shabbos right on the property." },
+                { title: "Volleyball & games", desc: "A dedicated hangout area for sports and socializing once Shabbos is out." },
+                { title: "Late-night atmosphere", desc: "The village becomes a gathering place — great food, great company, great memories." },
+              ].map((item, i) => (
+                <div key={item.title} style={{ display: "flex", gap: "32px", alignItems: "flex-start", padding: "24px 0", borderBottom: i < 2 ? "1px solid #EDE4D3" : "none" }}>
+                  <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontStyle: "italic", color: "#D4A853", minWidth: "24px", paddingTop: "2px" }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#2D5016", marginBottom: "6px" }}>{item.title}</h3>
+                    <p style={{ fontSize: "0.92rem", color: "#6b6b55", lineHeight: 1.7 }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DIVIDER ── */}
+      <div style={{ borderTop: "1px solid #EDE4D3", margin: "0 clamp(24px,5vw,60px)" }} />
+
       {/* ── GROUPS ── */}
       <section className="pg-section" style={{ padding: "clamp(56px,8vw,120px) clamp(24px,5vw,60px)", maxWidth: "1100px", margin: "0 auto" }}>
         <div className="editorial-grid">
@@ -118,7 +164,7 @@ export default function AboutPage() {
               Beyond Shabbos
             </p>
             <div style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(5rem, 12vw, 9rem)", fontWeight: 800, lineHeight: 1, color: "transparent", WebkitTextStroke: "1.5px #EDE4D3", userSelect: "none" }}>
-              03
+              04
             </div>
           </div>
           <div style={{ paddingTop: "12px" }}>
