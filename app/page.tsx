@@ -175,6 +175,7 @@ export default function Home() {
             "Communal Gathering",
             "Family Friendly",
             "Water Stations",
+            "Motzei Shabbos Food Court",
           ].map((item, i, arr) => (
             <span
               key={item}
