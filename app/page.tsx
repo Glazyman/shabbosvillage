@@ -252,6 +252,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── AMENITIES GRID ── */}
+      <section style={{ backgroundColor: "#F8F3E9", padding: "clamp(56px,8vw,112px) clamp(24px,5vw,60px)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "48px" }}>
+            What&apos;s Included
+          </p>
+          <div className="amenities-grid">
+            {[
+              {
+                title: "6 Minyonim Nearby",
+                desc: "A variety of minyanim within easy walking distance. No driving, no compromising on where you daven.",
+              },
+              {
+                title: "Motzei Shabbos Chill",
+                desc: "On-site food court with pizza, sushi, bakery, and more. Volleyball, late-night hangout, and great company.",
+              },
+              {
+                title: "Creek Access",
+                desc: "A gentle creek runs through the property — the perfect Shabbos afternoon backdrop.",
+              },
+              {
+                title: "Tent Camping",
+                desc: "Wooded sites with shade, privacy, and the sounds of nature surrounding you.",
+              },
+              {
+                title: "Electric Hookups",
+                desc: "Available at select sites for an additional fee.",
+              },
+              {
+                title: "Showers & Toilets",
+                desc: "Clean, central facilities maintained for all guests throughout the weekend.",
+              },
+              {
+                title: "Food Storage",
+                desc: "Shared trailer with warmers and freezers. All food locked in securely overnight.",
+              },
+              {
+                title: "Water Stations",
+                desc: "Central water access spread throughout the property.",
+              },
+              {
+                title: "Family Friendly",
+                desc: "A calm, welcoming atmosphere built for families, couples, and individuals of all ages.",
+              },
+            ].map((item, i) => (
+              <div
+                key={item.title}
+                style={{
+                  borderTop: "1px solid #DDD5C4",
+                  paddingTop: "28px",
+                }}
+              >
+                <p style={{ fontFamily: "var(--font-playfair)", fontSize: "0.8rem", fontStyle: "italic", color: "#D4A853", marginBottom: "10px" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#2D5016", marginBottom: "10px", lineHeight: 1.3 }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "#6b6b55" }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PHOTO + STEPS ── */}
       <section style={{ backgroundColor: "#F8F3E9" }}>
         <div

@@ -159,6 +159,26 @@ body {
   .nav-overlay   { display: flex !important; }
 }
 
+/* ── AMENITIES GRID ── */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 60px;
+}
+
+@media (max-width: 768px) {
+  .amenities-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 28px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .amenities-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* ── GALLERY ── */
 .gallery-grid {
   display: grid;
