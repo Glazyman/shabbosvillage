@@ -60,8 +60,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Shabbos Village"
-              width={120}
-              height={120}
+              width={60}
+              height={60}
               priority
               style={{ objectFit: "contain" }}
             />
