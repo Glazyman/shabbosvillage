@@ -601,7 +601,7 @@ export default function Home() {
             </p>
             <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#1a1a12", lineHeight: 1.2, marginBottom: "24px", letterSpacing: "-0.01em" }}>
               When Shabbos ends,
-              <br />the fun begins.
+              <br />the fun continues.
             </h2>
             <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", marginBottom: "16px", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
               On Motzei Shabbos, our food court comes alive — right on site. Pizza fresh out of the oven, bakery sandwiches, sushi, and more.
