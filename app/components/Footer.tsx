@@ -8,17 +8,14 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand" style={{ marginBottom: "48px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+          <div style={{ marginBottom: "16px" }}>
             <Image
               src="/logo.png"
               alt="Shabbos Village"
-              width={48}
-              height={48}
+              width={160}
+              height={160}
               style={{ objectFit: "contain" }}
             />
-            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 700, color: "#FDFAF5", letterSpacing: "0.01em" }}>
-              Shabbos Village
-            </span>
           </div>
           <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "280px" }}>
             A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
