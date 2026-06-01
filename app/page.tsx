@@ -151,20 +151,18 @@ export default function Home() {
       </section>
 
       {/* ── AMENITIES STRIP ── */}
-      <section style={{ backgroundColor: "#2D5016", padding: "18px 0" }}>
+      <section style={{ backgroundColor: "#2D5016", padding: "22px 0" }}>
         <div
           className="amenity-strip"
           style={{
             display: "flex",
-            gap: "clamp(16px, 2vw, 28px)",
+            gap: "clamp(12px, 2vw, 24px)",
+            rowGap: "12px",
             alignItems: "center",
             justifyContent: "center",
             padding: "0 clamp(16px, 3vw, 40px)",
-            overflowX: "auto",
-            flexWrap: "nowrap",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          } as React.CSSProperties}
+            flexWrap: "wrap",
+          }}
         >
           {[
             "Tent Camping",

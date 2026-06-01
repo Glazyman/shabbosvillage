@@ -231,11 +231,9 @@ div:hover > .gallery-caption-overlay {
     grid-template-columns: 1fr;
   }
 
-  /* Ticker strip — allow wrap on mobile */
+  /* Ticker strip — tighter padding on mobile */
   .amenity-strip {
-    flex-wrap: wrap !important;
-    gap: 16px !important;
-    padding: 14px 24px !important;
+    padding: 0 20px !important;
   }
 
   /* CTA sections */
