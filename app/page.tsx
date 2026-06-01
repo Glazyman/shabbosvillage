@@ -514,6 +514,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── MOTZEI SHABBOS FOOD COURT ── */}
+      <section style={{ position: "relative", overflow: "hidden" }}>
+        <div
+          className="split-grid"
+          style={{ maxWidth: "1100px", margin: "0 auto" }}
+        >
+          {/* Content */}
+          <div
+            className="split-content"
+            style={{
+              padding: "clamp(48px,7vw,96px) clamp(24px,5vw,60px)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              backgroundColor: "#FDFAF5",
+            }}
+          >
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8B5E3C", marginBottom: "20px" }}>
+              Motzei Shabbos
+            </p>
+            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#1a1a12", lineHeight: 1.2, marginBottom: "24px", letterSpacing: "-0.01em" }}>
+              When Shabbos ends,
+              <br />the fun begins.
+            </h2>
+            <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", marginBottom: "16px", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
+              On Motzei Shabbos, our food court comes alive — right on site. Pizza fresh out of the oven, bakery sandwiches, sushi, and more.
+            </p>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#6b6b55" }}>
+              Grab a bite, hang out with friends, and enjoy the night under the stars. There&apos;s also a volleyball area and communal hangout space — the energy keeps going long after Havdalah.
+            </p>
+          </div>
+
+          {/* Photo */}
+          <div
+            className="split-photo"
+            style={{
+              position: "relative",
+              height: "560px",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=85"
+              alt="Food court at night"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── FINAL CTA ── */}
       <section
         className="cta-section"

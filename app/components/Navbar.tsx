@@ -56,15 +56,18 @@ export default function Navbar() {
           }}
         >
           {/* Logo — left */}
-          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", zIndex: 110 }}>
+          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px", zIndex: 110 }}>
             <Image
               src="/logo.png"
               alt="Shabbos Village"
-              width={56}
-              height={56}
+              width={36}
+              height={54}
               priority
-              style={{ objectFit: "contain", borderRadius: "6px" }}
+              style={{ objectFit: "contain" }}
             />
+            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1rem", fontWeight: 700, color: textColor, letterSpacing: "0.01em", transition: "color 0.5s ease" }}>
+              Shabbos Village
+            </span>
           </Link>
 
           {/* Desktop links — center */}
