@@ -77,8 +77,9 @@ export default function AboutPage() {
                 { title: "Water stations", desc: "Central water access throughout the property." },
                 { title: "Gathering areas", desc: "Communal spaces for shared meals, conversation, and connection." },
                 { title: "Food storage station", desc: "A shared trailer with warmers and freezers where tent campers store all food. Everything is locked in securely overnight." },
+                { title: "6 minyonim within walking distance", desc: "A variety of six minyanim are within easy walking distance of the campground — no need to drive or compromise on where you daven." },
               ].map((item, i) => (
-                <div key={item.title} style={{ display: "flex", gap: "32px", alignItems: "flex-start", padding: "28px 0", borderBottom: i < 6 ? "1px solid #EDE4D3" : "none" }}>
+                <div key={item.title} style={{ display: "flex", gap: "32px", alignItems: "flex-start", padding: "28px 0", borderBottom: i < 7 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontStyle: "italic", color: "#D4A853", minWidth: "24px", paddingTop: "2px" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
