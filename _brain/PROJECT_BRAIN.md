@@ -174,3 +174,4 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 - Navbar (`Navbar.tsx:61`) and Footer (`Footer.tsx:13`) both reference `/logo.png`, so both update automatically
 - Note: navbar renders logo at 60×60px; baked-in "SHABBOS VILLAGE" text reads small at that size — may want a lamp-only crop for the navbar later
 - `public/logo 2.png` remains unused (not referenced anywhere)
+- Enlarged logo: Navbar 60→96px (nav height bumped 80→112px / scrolled 64→88px to avoid clipping); Footer 160→220px

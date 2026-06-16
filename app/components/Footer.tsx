@@ -12,8 +12,8 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="Shabbos Village"
-              width={160}
-              height={160}
+              width={220}
+              height={220}
               style={{ objectFit: "contain" }}
             />
           </div>

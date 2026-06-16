@@ -48,7 +48,7 @@ export default function Navbar() {
             maxWidth: "1200px",
             margin: "0 auto",
             padding: "0 clamp(20px, 5vw, 40px)",
-            height: scrolled ? "64px" : "80px",
+            height: scrolled ? "88px" : "112px",
             display: "grid",
             gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
@@ -60,8 +60,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Shabbos Village"
-              width={60}
-              height={60}
+              width={96}
+              height={96}
               priority
               style={{ objectFit: "contain" }}
             />
