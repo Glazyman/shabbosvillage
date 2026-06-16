@@ -4,6 +4,18 @@
 
 ---
 
+## Deployment Notes
+
+**Always force push.** Normal `git push origin main` consistently fails with diverged remote errors due to a persistent local/remote state mismatch. Use:
+
+```
+git push --force origin main
+```
+
+This is a solo repo with no other contributors, so force pushing is safe. Vercel auto-deploys from the `main` branch on GitHub after every push.
+
+---
+
 ## What Is This Project
 
 **Shabbos Village** is a campground booking website for a Jewish outdoor Shabbos experience — tent camping in a wooded setting with creek access, communal atmosphere, and Shabbos-specific amenities. The site handles discovery, booking, waiver signing, and event confirmation.
@@ -73,14 +85,21 @@
 
 | Component | File | Notes |
 |---|---|---|
-| Navbar | `app/components/Navbar.tsx` | Logo + hamburger on mobile, full links on desktop |
+| Navbar | `app/components/Navbar.tsx` | Logo + "Shabbos Village" text on left; desktop links center; hamburger mobile-only |
 | Footer | `app/components/Footer.tsx` | Dark green, 3-col links (Explore / On Site / Contact); On Site hidden on mobile |
+| AmenitiesGrid | `app/components/AmenitiesGrid.tsx` | Client component; 9 amenity cards, "Motzei Shabbos Chill" is expandable with `+` toggle |
 
 ---
 
 ## Amenities (current homepage strip)
 
 Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature Trails · Communal Gathering · Family Friendly · Water Stations · Motzei Shabbos Food Court
+
+---
+
+## Wording to Lock In
+
+- Motzei Shabbos heading: **"When Shabbos ends, the fun continues."** (not "begins")
 
 ---
 
@@ -131,9 +150,27 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 
 - Added "Food Storage Station" and "Motzei Shabbos Food Court" to amenity strip on homepage
 
-### 2026-06-01 — Brain file + minyonim feature
+### 2026-06-01 — Brain, minyonim, navbar, amenities grid, dropdowns
 
-- Created `_brain/PROJECT_BRAIN.md` (this file) to document project history
-- Added session-log rule to CLAUDE.md
-- Added "6 Minyonim Within Walking Distance" to homepage amenity strip (`app/page.tsx`)
-- Added "6 minyonim within walking distance" as item 08 in the "What to Expect" list on the About page (`app/about/page.tsx`), with description noting no need to drive or compromise on where you daven; updated `borderBottom` condition from `i < 6` to `i < 7` to keep the last item borderless
+- Created `_brain/PROJECT_BRAIN.md` and added session-log rule to `CLAUDE.md`
+- Added "6 Minyonim Within Walking Distance" to homepage amenity strip
+- Added minyonim as item 08 in About page "What to Expect" list
+- Restored `Navbar.tsx` (had been accidentally deleted from working tree)
+- Added "Shabbos Village" text next to logo in Navbar (matches footer style; color transitions with scroll state)
+- Footer logo: shrunk from 88×88px square to 30×45px lantern with inline brand name text
+- Amenity strip: switched from `nowrap`/horizontal-scroll to `flexWrap: wrap` so it fits naturally at any width
+- Added full "What's Included" amenities grid section to homepage (3-col desktop, 2-col tablet, 1-col mobile) — 9 cards numbered in gold, placed after editorial intro
+- Added Motzei Shabbos food court split section to homepage (later removed, see below)
+- Fixed heading: "When Shabbos ends, the fun **continues**" (not "begins") — locked in brain
+- Replaced inline amenities grid with `AmenitiesGrid` client component (`app/components/AmenitiesGrid.tsx`) so cards can be interactive
+- "Motzei Shabbos Chill" card is expandable — click to reveal full food court details inline; `+` rotates to `×` when open
+- Removed the standalone Motzei Shabbos split section (content now lives in the dropdown)
+- All pushes use `git push --force origin main` due to persistent local/remote state mismatch
+
+### 2026-06-15 — New lamp logo (transparent)
+
+- Replaced `public/logo.png` with new lamp + "Shabbos Village" design (sourced from a ChatGPT-generated image)
+- Made the cream background transparent via edge flood-fill (PIL/scipy) so the warm glow inside the lantern is preserved
+- Navbar (`Navbar.tsx:61`) and Footer (`Footer.tsx:13`) both reference `/logo.png`, so both update automatically
+- Note: navbar renders logo at 60×60px; baked-in "SHABBOS VILLAGE" text reads small at that size — may want a lamp-only crop for the navbar later
+- `public/logo 2.png` remains unused (not referenced anywhere)
