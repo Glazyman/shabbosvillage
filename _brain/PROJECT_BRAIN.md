@@ -175,3 +175,4 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 - Note: navbar renders logo at 60×60px; baked-in "SHABBOS VILLAGE" text reads small at that size — may want a lamp-only crop for the navbar later
 - `public/logo 2.png` remains unused (not referenced anywhere)
 - Enlarged logo: Navbar 60→96px (nav height bumped 80→112px / scrolled 64→88px to avoid clipping); Footer 160→220px
+- Footer logo fix: transparent logo showed cream blobs in letter counters (B/O/A/G holes) on the dark footer. Made `public/logo-footer.png` with footer green `#1a2a0f` baked in (global cream→green replace, feathered edges) so it blends seamlessly. Footer now uses `/logo-footer.png`; navbar still uses transparent `/logo.png`

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="footer-brand" style={{ marginBottom: "48px" }}>
           <div style={{ marginBottom: "16px" }}>
             <Image
-              src="/logo.png"
+              src="/logo-footer.png"
               alt="Shabbos Village"
               width={220}
               height={220}
