@@ -3,36 +3,52 @@ import Image from "next/image";
 
 const waiverSections = [
   {
+    title: "Definitions",
+    body: "In this Agreement, the term \"Released Parties\" means Joseph Farkas, individually and doing business as Shabbos Village, together with the owner(s) of the real property on which the campground operates, and each of their respective heirs, successors, assigns, family members, employees, agents, volunteers, contractors, representatives, and insurers. The terms \"I,\" \"me,\" and \"my\" refer to the undersigned guest, signing individually and on behalf of every member of my party, including any minors. \"Activities\" means camping, lodging, and any and all recreational, social, religious, or other activities occurring on or related to the property.",
+  },
+  {
     title: "Assumption of Risk",
-    body: "Camping and outdoor activities involve inherent natural risks, including uneven terrain, wildlife, weather conditions, water areas (creek), fire hazards, and other outdoor hazards. I voluntarily assume all such risks associated with my participation in activities at Shabbos Village.",
+    body: "I understand and acknowledge that camping and outdoor activities are inherently dangerous and involve known and unknown risks that cannot be eliminated regardless of the care taken. These risks include, without limitation: uneven, rocky, or slippery terrain; trees, branches, and falling objects; insects, wildlife, and animals; allergens and plants; weather and environmental conditions; the creek, water, and drowning hazards; fire, smoke, cooking, and burns; vehicles and the access road; the conduct of other guests; and the potential for serious personal injury, illness, disability, permanent paralysis, or death, and for property damage or loss. KNOWING THESE RISKS, I VOLUNTARILY AND EXPRESSLY ASSUME ANY AND ALL SUCH RISKS, both known and unknown, whether or not described above, and accept full responsibility for any resulting injury, loss, or damage to me, my party, or my property.",
   },
   {
-    title: "Hold Harmless & Release of Liability",
-    body: "In consideration of being permitted access to the Shabbos Village property, I hereby agree to RELEASE, HOLD HARMLESS, and INDEMNIFY Shabbos Village, its owners, operators, employees, and agents from any and all claims, demands, actions, suits, or liability for any personal injury, property damage, or loss arising out of or in connection with my presence on the property, whether caused by negligence or otherwise.",
+    title: "Release and Waiver of Liability",
+    body: "In consideration of being permitted to enter and use the Shabbos Village property and to participate in the Activities, I, for myself and on behalf of my party and our respective heirs, executors, administrators, successors, and assigns, hereby FOREVER RELEASE, WAIVE, DISCHARGE, and COVENANT NOT TO SUE the Released Parties from and for any and all claims, demands, actions, causes of action, suits, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) of any kind whatsoever, arising out of or in any way connected with my presence on the property or participation in the Activities, INCLUDING ANY SUCH CLAIM CAUSED IN WHOLE OR IN PART BY THE ORDINARY NEGLIGENCE OF THE RELEASED PARTIES, to the fullest extent permitted by law. I understand that I am giving up substantial legal rights, including the right to sue.",
   },
   {
-    title: "Responsibility for Guests & Minors",
-    body: "I accept full responsibility for the safety and conduct of all guests, including minors, traveling with me. I agree that all guests in my party have been informed of and agree to abide by the Shabbos Village rules and regulations. Children must be supervised at all times, especially near water areas.",
+    title: "Hold Harmless and Indemnification",
+    body: "I agree to DEFEND, INDEMNIFY, and HOLD HARMLESS the Released Parties from and against any and all claims, demands, actions, liabilities, damages, losses, judgments, costs, and expenses (including reasonable attorneys' fees and litigation costs) brought by me, by any member of my party, or by any third party, that arise out of, result from, or relate to my or my party's presence on the property, participation in the Activities, use of any facilities or equipment, or violation of this Agreement or of the campground rules, whether or not caused by the negligence of the Released Parties.",
   },
   {
-    title: "Property & Conduct",
-    body: "I agree to respect and care for all campground property. I will not engage in any behavior that disrupts the peace and respectful atmosphere of Shabbos Village. Management reserves the right to require any guest to leave without refund if conduct violates campground rules.",
+    title: "Medical Treatment and Emergencies",
+    body: "I authorize the Released Parties, in the event of an injury or medical emergency, to secure or administer such first aid or emergency medical care as may be deemed reasonably necessary for me or any minor in my party, and I agree to be solely responsible for all costs of such treatment and transport. I represent that I and the members of my party are in good health, are physically capable of safely participating in the Activities, and have no condition that would create an unreasonable risk to ourselves or others.",
   },
   {
-    title: "One Way In, One Way Out",
-    body: "I acknowledge that the campground has a single access road and agree to follow all directional instructions provided by management. No unauthorized vehicles may block access.",
+    title: "Responsibility for Guests and Minors",
+    body: "I accept full and sole responsibility for the safety, supervision, and conduct of every member of my party, including all minors. I represent that I have the legal authority to sign this Agreement on their behalf and that each member of my party has been informed of, understands, and agrees to abide by the campground rules. Children must be supervised by a responsible adult at all times, particularly near the creek, water, fire areas, and roadways.",
   },
   {
-    title: "Camping Disclaimer",
-    body: "I acknowledge that camping and outdoor activities involve natural risks including uneven terrain, wildlife, weather, water hazards, and fire. I represent that I am physically capable of participating in outdoor camping activities and that I and my guests participate voluntarily at our own risk.",
+    title: "Personal Property",
+    body: "I understand that the Released Parties are not responsible for, and assume no liability for, any loss, theft, or damage to personal property belonging to me or my party, whether stored in the shared food storage area, left at a campsite, or located anywhere else on the property. I bring and store all personal property at my own risk.",
   },
   {
-    title: "Community Atmosphere",
-    body: "Shabbos Village is intended to maintain a calm, respectful, family-friendly, and Shabbos-observant environment. I agree to observe all Shabbos guidelines and campground rules during my stay.",
+    title: "Rules, Conduct, and Right to Remove",
+    body: "I agree to comply with all posted and published campground rules, directional instructions, and the lawful directions of management. I will respect the property, the natural environment, and the calm, family-friendly, Shabbos-observant atmosphere of Shabbos Village. I acknowledge that the property has a single access road and that no vehicle may block access. Management reserves the right to remove me or any member of my party, without refund, for conduct that violates the rules or endangers or disturbs others.",
   },
   {
-    title: "Governing Law",
-    body: "This agreement shall be governed by the laws of the state in which the property is located. If any provision of this agreement is found to be unenforceable, the remaining provisions shall remain in full force and effect.",
+    title: "Insurance",
+    body: "I understand and agree that the Released Parties do not carry or provide any medical, health, accident, disability, or personal property insurance for guests, and that I am solely responsible for obtaining and maintaining any insurance coverage I deem necessary for myself and my party.",
+  },
+  {
+    title: "Severability and No Waiver",
+    body: "I agree that this Agreement is intended to be as broad and inclusive as is permitted by the laws of the State of New York, and that if any portion is held invalid or unenforceable, the remainder shall continue in full legal force and effect, and the invalid portion shall be modified to the minimum extent necessary to make it enforceable. The failure of the Released Parties to enforce any provision shall not constitute a waiver of that or any other provision.",
+  },
+  {
+    title: "Governing Law and Venue",
+    body: "This Agreement shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict-of-law principles. I agree that the exclusive venue and jurisdiction for any dispute arising out of or relating to this Agreement or the Activities shall lie in the state courts located in the county in which the property is situated, and I consent to the personal jurisdiction of those courts.",
+  },
+  {
+    title: "Entire Agreement and Acknowledgment",
+    body: "I acknowledge that I have had sufficient opportunity to read this entire Agreement, that I have read and understand it, that it constitutes the entire agreement between me and the Released Parties concerning its subject matter and supersedes any prior representations, and that I am signing it freely, voluntarily, and without any inducement. I intend my signature to be a complete and unconditional release of liability to the greatest extent permitted by law.",
   },
 ];
 
@@ -62,7 +78,7 @@ export default function WaiverPage() {
 
         {/* Intro */}
         <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a4a3a", borderLeft: "2px solid #D4A853", paddingLeft: "20px", marginBottom: "56px" }}>
-          By completing a reservation at Shabbos Village, you acknowledge that you have read and agree to the following terms on behalf of yourself and all members of your party.
+          This Release of Liability, Waiver, and Hold Harmless Agreement (&ldquo;Agreement&rdquo;) is entered into between you (the guest) and <strong>Joseph Farkas</strong>, individually and doing business as Shabbos Village. By completing a reservation, you acknowledge that you have carefully read, understand, and agree to be legally bound by the following terms, on behalf of yourself and all members of your party, including any minors.
         </p>
 
         {/* Waiver sections */}
@@ -85,7 +101,7 @@ export default function WaiverPage() {
         {/* Acknowledgement note */}
         <div style={{ borderTop: "2px solid #2D5016", paddingTop: "28px", marginBottom: "48px" }}>
           <p style={{ fontSize: "0.95rem", fontWeight: 600, color: "#1a1a12", lineHeight: 1.7, margin: 0 }}>
-            This agreement is acknowledged electronically at the time of booking. Your typed name and checkbox confirmation during checkout constitute a legally binding electronic signature under the ESIGN Act.
+            I HAVE READ THIS AGREEMENT, FULLY UNDERSTAND ITS TERMS, UNDERSTAND THAT I AM GIVING UP SUBSTANTIAL RIGHTS — INCLUDING MY RIGHT TO SUE — AND SIGN IT FREELY AND VOLUNTARILY. This Agreement is acknowledged electronically at the time of booking; your typed name and checkbox confirmation during checkout constitute a legally binding electronic signature under the federal ESIGN Act and applicable state law, and have the same force and effect as a handwritten signature.
           </p>
         </div>
 

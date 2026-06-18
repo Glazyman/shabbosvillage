@@ -176,3 +176,12 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 - `public/logo 2.png` remains unused (not referenced anywhere)
 - Enlarged logo: Navbar 60→96px (nav height bumped 80→112px / scrolled 64→88px to avoid clipping); Footer 160→220px
 - Footer logo fix: transparent logo showed cream blobs in letter counters (B/O/A/G holes) on the dark footer. Made `public/logo-footer.png` with footer green `#1a2a0f` baked in (global cream→green replace, feathered edges) so it blends seamlessly. Footer now uses `/logo-footer.png`; navbar still uses transparent `/logo.png`
+
+### 2026-06-18 — Content edits, packing-list PDF, legal waiver rewrite
+
+- **About page** — item 07 "Food storage station": "shared trailer" → "shared space". Item 08 "6 minyonim": removed the "no need to drive" wording, added "you're always welcome to make your own minyan as well."
+- **Homepage AmenitiesGrid** — item 02 "Motzei Shabbos Chill": dropped the on-site food court; desc now just "Late-night hangout once Shabbos is out." Dropdown `extra` stripped of all food (pizza/bakery/sushi) — now only highlights the volleyball/communal hangout chill.
+- **FAQ** — #1: "XL cabin-tent sites" → "XL tent sites" (tents only). #3: removed the "$20/night" electricity price (TBD) → "for an additional fee". #8: added a **Download Packing List (PDF)** button; `faqs` array now typed with optional `download: {href,label}` and the answer block renders a green download link when present.
+- **Packing list PDF** — created `public/shabbos-village-packing-list.pdf` (branded, 7 sections w/ checkboxes, 114 KB, valid PDF). Generated via reportlab (installed with `pip3 install --user`, NOT added to package.json); reusable generator kept at `_brain/renders/make_packing_list.py`.
+- **Hold Harmless waiver** (`app/waiver/page.tsx`) — full rewrite into a comprehensive 12-section legal agreement. Released/indemnified party is now **Joseph Farkas, individually and d/b/a Shabbos Village** (not the entity), via a defined "Released Parties" term. Governing law: **New York** (confirmed w/ user). Intro + acknowledgement note updated. Inline checkout waiver summary (`app/book/page.tsx:287`) updated to match the Joseph Farkas release language.
+- Note: `npx tsc --noEmit` reports two pre-existing TS2688 errors for stray `node_modules/@types/react 2` and `react-dom 2` duplicate folders (Finder/iCloud " 2" duplication, same pattern as `logo 2.png`) — unrelated to these edits; all edited files typecheck clean.

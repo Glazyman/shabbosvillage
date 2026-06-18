@@ -3,15 +3,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const faqs = [
-  { q: "Is this tent camping only?", a: "Yes — Shabbos Village is a tent camping experience. We have standard, large, and XL cabin-tent sites. Bring your own tent and gear." },
+const faqs: { q: string; a: string; download?: { href: string; label: string } }[] = [
+  { q: "Is this tent camping only?", a: "Yes — Shabbos Village is a tent camping experience. We have standard, large, and XL tent sites. Bring your own tent and gear." },
   { q: "Are there bathrooms and showers?", a: "Yes. Central toilet and shower facilities are clean, maintained, and available to all guests throughout their stay." },
-  { q: "Is electricity available?", a: "Yes. Electric hookup sites are available at an additional $20/night. We also have central charging stations. We encourage unplugging for the full Shabbos experience." },
+  { q: "Is electricity available?", a: "Yes. Electric hookup sites are available for an additional fee. We also have central charging stations. We encourage unplugging for the full Shabbos experience." },
   { q: "Are pets allowed?", a: "To maintain a peaceful and safe environment for all families, pets are not permitted at this time." },
   { q: "Can groups reserve together?", a: "Absolutely. We accommodate families, friend groups, and organizations. We also offer full-park exclusive rentals for camps, retreats, and private events — contact us for group pricing." },
   { q: "Are fires permitted?", a: "Yes, in designated fire rings only. No open fires outside fire areas. All fires must be fully extinguished before sleeping or leaving your site." },
   { q: "Is there parking?", a: "Yes. Designated parking area on site. One way in, one way out — directions and parking details are provided after booking confirmation." },
-  { q: "What should I bring?", a: "Your tent, sleeping bags, personal items, and Shabbos essentials (candles, challah, wine). A full packing list is sent with your booking confirmation." },
+  { q: "What should I bring?", a: "Your tent, sleeping bags, personal items, and Shabbos essentials (candles, challah, wine). Download our full packing list below, and a copy is also sent with your booking confirmation.", download: { href: "/shabbos-village-packing-list.pdf", label: "Download Packing List (PDF)" } },
   { q: "Are there quiet hours?", a: "Yes. Quiet hours run from 10 PM Friday night through Havdalah on Saturday. We ask all guests to honor the sanctity of Shabbos throughout their stay." },
   { q: "Is this family-friendly?", a: "100%. Shabbos Village is designed to be safe, calm, and joyful for families. Children are welcome and must be supervised near water areas." },
   { q: "Can we rent the entire park?", a: "Yes — this is one of our most popular options. Full-park exclusive rental for groups, camps, organizations, and private events. Contact us for details." },
@@ -81,6 +81,15 @@ export default function FAQPage() {
               {open === i && (
                 <div className="faq-answer" style={{ paddingBottom: "32px" }}>
                   <p style={{ fontSize: "0.97rem", lineHeight: 1.85, color: "#4a4a3a" }}>{faq.a}</p>
+                  {faq.download && (
+                    <a
+                      href={faq.download.href}
+                      download
+                      style={{ display: "inline-block", marginTop: "18px", backgroundColor: "#2D5016", color: "#FDFAF5", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "12px 26px", borderRadius: "3px", textDecoration: "none" }}
+                    >
+                      {faq.download.label}
+                    </a>
+                  )}
                 </div>
               )}
             </div>

@@ -284,7 +284,7 @@ export default function BookPage() {
                   <Link href="/rules" target="_blank" style={{ color: "#2D5016", fontWeight: 700, textDecoration: "underline" }}>Campground Rules & Safety Guidelines</Link>.
                 </p>
                 <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#4a4a3a", marginBottom: "12px" }}>
-                  I voluntarily assume all risks associated with camping and outdoor activities, including uneven terrain, wildlife, weather conditions, water areas, and other natural hazards. I release and hold harmless Shabbos Village, its owners, operators, and agents from any claims arising from my presence on the property.
+                  I voluntarily assume all risks associated with camping and outdoor activities, including uneven terrain, wildlife, weather conditions, water areas, fire, and other natural hazards. I forever release, hold harmless, and agree to indemnify Joseph Farkas, individually and doing business as Shabbos Village, together with the property owner(s) and their respective heirs, agents, employees, and representatives, from any and all claims arising from my presence on the property or participation in any activities, including claims caused by ordinary negligence, to the fullest extent permitted by law.
                 </p>
                 <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#4a4a3a" }}>
                   I accept full responsibility for myself and all members of my party, including minors. I understand that management may require any guest to leave if conduct violates campground rules.

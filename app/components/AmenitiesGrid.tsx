@@ -8,8 +8,8 @@ const amenities = [
   },
   {
     title: "Motzei Shabbos Chill",
-    desc: "On-site food court and late-night hangout once Shabbos is out.",
-    extra: "Pizza fresh out of the oven, bakery sandwiches, sushi, and more — right on the property. There's also a volleyball area and communal hangout space, so the energy keeps going long after Havdalah.",
+    desc: "Late-night hangout once Shabbos is out.",
+    extra: "There's a volleyball area and communal hangout space, so the energy keeps going long after Havdalah.",
   },
   {
     title: "Creek Access",
