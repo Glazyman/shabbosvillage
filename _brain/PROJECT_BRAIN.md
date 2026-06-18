@@ -193,3 +193,10 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 - Script: `_brain/renders/make_transparent_logo.py` (PIL+scipy+numpy; optional 3rd arg bakes a solid bg color instead of transparency). Verified by compositing over cream and footer-green.
 - Because the transparent version is now clean on the dark footer too (no cream counter blobs), **both** `public/logo.png` (navbar) and `public/logo-footer.png` (footer) now use the same transparent file — no separate green-baked version needed anymore. Downscaled to 660×660 and optimized → ~83 KB each (was 1.5 MB).
 - Navbar still renders 96×96, footer 220×220, both `objectFit: contain` (square source, no distortion). Lamp+text reads small at 96px navbar — a lamp-only crop is still an option if desired later.
+
+### 2026-06-18 — Navbar: stationary green background
+
+- Navbar (`Navbar.tsx`) no longer starts transparent and turns cream on scroll. Background is now a stationary footer-green `#1a2a0f` with a subtle `1px solid rgba(255,255,255,0.08)` bottom border. Removed the scroll/open-driven background, backdrop blur, and cream-on-scroll logic.
+- Text/links and the hamburger lines are now always light (`rgba(255,255,255,0.92)`). Reserve button switched to solid gold `#D4A853` with dark text so it pops on the green bar.
+- `scrolled` state retained only for the subtle 112px→88px height shrink on scroll (background is fully stationary).
+- Mobile full-screen overlay menu left as-is (cream `#FDFAF5` with dark links) — green top bar sits above it. Can be made green too if desired.

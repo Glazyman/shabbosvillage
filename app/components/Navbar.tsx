@@ -26,7 +26,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const textColor = (open || scrolled) ? "#1a1a12" : "rgba(255,255,255,0.92)";
+  const textColor = "rgba(255,255,255,0.92)";
 
   return (
     <>
@@ -38,9 +38,8 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: "all 0.5s ease",
-          backgroundColor: open ? "#FDFAF5" : scrolled ? "rgba(253,250,245,0.97)" : "transparent",
-          backdropFilter: (!open && scrolled) ? "blur(16px)" : "none",
-          borderBottom: (!open && scrolled) ? "1px solid #EDE4D3" : "1px solid transparent",
+          backgroundColor: "#1a2a0f",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
       >
         <nav
@@ -78,7 +77,7 @@ export default function Navbar() {
 
           {/* Reserve button — right — desktop only */}
           <div className="nav-desktop" style={{ justifyContent: "flex-end" }}>
-            <Link href="/book" style={{ display: "inline-block", backgroundColor: scrolled ? "#2D5016" : "rgba(255,255,255,0.14)", border: scrolled ? "none" : "1px solid rgba(255,255,255,0.45)", backdropFilter: "blur(4px)", color: "#FDFAF5", fontWeight: 600, fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", borderRadius: "3px", textDecoration: "none", transition: "all 0.3s" }}>
+            <Link href="/book" style={{ display: "inline-block", backgroundColor: "#D4A853", border: "none", color: "#1a2a0f", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", borderRadius: "3px", textDecoration: "none", transition: "all 0.3s" }}>
               Reserve
             </Link>
           </div>
@@ -90,9 +89,9 @@ export default function Navbar() {
             style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", zIndex: 110, width: "36px", height: "36px", gridColumn: "3", justifySelf: "end" }}
             aria-label="Toggle menu"
           >
-            <span style={{ display: "block", width: open ? "22px" : "22px", height: "1.5px", backgroundColor: open ? "#1a1a12" : textColor, transition: "all 0.35s", transform: open ? "translateY(7.5px) rotate(45deg)" : "none" }} />
-            <span style={{ display: "block", width: "16px", height: "1.5px", backgroundColor: open ? "#1a1a12" : textColor, transition: "all 0.2s", opacity: open ? 0 : 1 }} />
-            <span style={{ display: "block", width: "22px", height: "1.5px", backgroundColor: open ? "#1a1a12" : textColor, transition: "all 0.35s", transform: open ? "translateY(-7.5px) rotate(-45deg)" : "none" }} />
+            <span style={{ display: "block", width: "22px", height: "1.5px", backgroundColor: textColor, transition: "all 0.35s", transform: open ? "translateY(7.5px) rotate(45deg)" : "none" }} />
+            <span style={{ display: "block", width: "16px", height: "1.5px", backgroundColor: textColor, transition: "all 0.2s", opacity: open ? 0 : 1 }} />
+            <span style={{ display: "block", width: "22px", height: "1.5px", backgroundColor: textColor, transition: "all 0.35s", transform: open ? "translateY(-7.5px) rotate(-45deg)" : "none" }} />
           </button>
         </nav>
       </header>
