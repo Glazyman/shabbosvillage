@@ -9,8 +9,8 @@ export default function Home() {
       <section
         style={{
           position: "relative",
-          height: "calc(100vh - 100px)",
-          minHeight: "640px",
+          height: "calc(100dvh - var(--nav-h))",
+          minHeight: "560px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

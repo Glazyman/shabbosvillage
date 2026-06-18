@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Josefin_Sans, Lora } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -18,6 +18,13 @@ const josefin = Josefin_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1a2a0f",
+};
 
 export const metadata: Metadata = {
   title: "Shabbos Village — Peaceful Shabbos Camping in Nature",

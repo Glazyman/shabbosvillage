@@ -39,7 +39,7 @@ export default function Navbar() {
             maxWidth: "1200px",
             margin: "0 auto",
             padding: "0 clamp(20px, 5vw, 40px)",
-            height: "100px",
+            height: "var(--nav-h)",
             display: "grid",
             gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
@@ -53,6 +53,7 @@ export default function Navbar() {
               width={96}
               height={96}
               priority
+              className="nav-logo"
               style={{ objectFit: "contain" }}
             />
           </Link>
@@ -103,7 +104,7 @@ export default function Navbar() {
         }}
       >
         {/* Spacer for the header bar */}
-        <div style={{ height: "100px", flexShrink: 0 }} />
+        <div style={{ height: "var(--nav-h)", flexShrink: 0 }} />
 
         {/* Links */}
         <nav style={{ flex: 1, display: "flex", flexDirection: "column", padding: "32px 32px 0" }}>
