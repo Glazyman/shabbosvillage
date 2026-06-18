@@ -294,11 +294,36 @@ export default function BookPage() {
             <div className="form-two-col" style={{ marginBottom: "8px" }}>
               <div>
                 <label style={labelStyle}>Arrival Date (Friday)</label>
-                <input className="form-input" type="date" value={form.arrivalDate} onChange={set("arrivalDate")} />
+                <input
+                  className="form-input"
+                  type="date"
+                  min={todayStr()}
+                  value={form.arrivalDate}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setForm((p) => ({
+                      ...p,
+                      arrivalDate: v,
+                      // clear departure if it's no longer after the new arrival
+                      departureDate: p.departureDate && v && p.departureDate <= v ? "" : p.departureDate,
+                    }));
+                  }}
+                />
               </div>
               <div>
                 <label style={labelStyle}>Departure Date</label>
-                <input className="form-input" type="date" value={form.departureDate} onChange={set("departureDate")} />
+                <input
+                  className="form-input"
+                  type="date"
+                  min={form.arrivalDate ? addDays(form.arrivalDate, 1) : todayStr()}
+                  value={form.departureDate}
+                  disabled={!form.arrivalDate}
+                  onChange={set("departureDate")}
+                  style={{ opacity: form.arrivalDate ? 1 : 0.55, cursor: form.arrivalDate ? "auto" : "not-allowed" }}
+                />
+                {!form.arrivalDate && (
+                  <p style={{ fontSize: "0.75rem", color: "#8B8070", marginTop: "6px" }}>Pick your arrival date first.</p>
+                )}
               </div>
             </div>
             <p style={{ fontSize: "0.82rem", marginBottom: "32px", minHeight: "20px" }}>{availabilityLine()}</p>
@@ -497,6 +522,18 @@ export default function BookPage() {
       </div>
     </div>
   );
+}
+
+// Local (timezone-safe) YYYY-MM-DD helpers for the date inputs.
+function todayStr(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function addDays(dateStr: string, n: number): string {
+  const [y, m, dd] = dateStr.split("-").map(Number);
+  const d = new Date(y, m - 1, dd + n);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
 const labelStyle: React.CSSProperties = {
