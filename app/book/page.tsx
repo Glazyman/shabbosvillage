@@ -13,7 +13,6 @@ type FormData = {
   guests: string;
   vehicles: string;
   tentType: string;
-  hookup: string;
   groupType: string;
   notes: string;
   waiverSigned: boolean;
@@ -23,12 +22,12 @@ type FormData = {
 const initialForm: FormData = {
   firstName: "", lastName: "", email: "", phone: "",
   arrivalDate: "", departureDate: "", guests: "1",
-  vehicles: "1", tentType: "standard", hookup: "no",
+  vehicles: "1", tentType: "standard",
   groupType: "family", notes: "", waiverSigned: false,
   waiverSignature: "",
 };
 
-const PRICING = { base: 45, hookup: 20, perGuest: 15, perVehicle: 10 };
+const PRICING = { base: 45, perGuest: 15, perVehicle: 10 };
 
 function calcTotal(form: FormData) {
   const nights = (() => {
@@ -38,8 +37,7 @@ function calcTotal(form: FormData) {
   })();
   const guests = Math.max(1, parseInt(form.guests) || 1);
   const vehicles = Math.max(0, parseInt(form.vehicles) || 0);
-  const hookup = form.hookup === "yes" ? PRICING.hookup : 0;
-  const total = (PRICING.base + hookup + (guests - 1) * PRICING.perGuest + vehicles * PRICING.perVehicle) * nights;
+  const total = (PRICING.base + (guests - 1) * PRICING.perGuest + vehicles * PRICING.perVehicle) * nights;
   return { total, nights };
 }
 
@@ -199,14 +197,7 @@ export default function BookPage() {
                 <select className="form-input" value={form.tentType} onChange={set("tentType")}>
                   <option value="standard">Standard (up to 4 person)</option>
                   <option value="large">Large (up to 8 person)</option>
-                  <option value="xl">XL / Cabin Tent</option>
-                </select>
-              </div>
-              <div>
-                <label style={labelStyle}>Electric Hookup</label>
-                <select className="form-input" value={form.hookup} onChange={set("hookup")}>
-                  <option value="no">No hookup needed</option>
-                  <option value="yes">Yes — +$20/night</option>
+                  <option value="xl">XL Tent</option>
                 </select>
               </div>
             </div>
@@ -253,9 +244,8 @@ export default function BookPage() {
                 { label: "Guests",    value: form.guests },
                 { label: "Vehicles",  value: form.vehicles },
                 { label: "Tent",      value: form.tentType },
-                { label: "Hookup",    value: form.hookup === "yes" ? "Yes (+$20/night)" : "No" },
-              ].map((row, i) => (
-                <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "14px 0", borderBottom: i < 9 ? "1px solid #EDE4D3" : "none" }}>
+              ].map((row, i, arr) => (
+                <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "14px 0", borderBottom: i < arr.length - 1 ? "1px solid #EDE4D3" : "none" }}>
                   <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#8B8070" }}>{row.label}</span>
                   <span style={{ fontSize: "0.97rem", color: "#1a1a12", fontWeight: 500 }}>{row.value}</span>
                 </div>
@@ -265,7 +255,7 @@ export default function BookPage() {
                 <span style={{ fontFamily: "var(--font-playfair)", fontSize: "2.2rem", fontWeight: 700, color: "#2D5016" }}>${total}</span>
               </div>
               <p style={{ fontSize: "0.78rem", color: "#8B8070", marginTop: "6px", textAlign: "right" }}>
-                $45 base/night + guests + vehicles + hookup × {nights} night{nights !== 1 ? "s" : ""}
+                $45 base/night + guests + vehicles × {nights} night{nights !== 1 ? "s" : ""}
               </p>
             </div>
 

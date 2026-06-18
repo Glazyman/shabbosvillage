@@ -9,7 +9,7 @@ const FROM_EMAIL  = process.env.RESEND_FROM_EMAIL ?? "Shabbos Village <bookings@
 
 function tentLabel(v: string) {
   if (v === "large") return "Large (up to 8 person)";
-  if (v === "xl")    return "XL / Cabin Tent";
+  if (v === "xl")    return "XL Tent";
   return "Standard (up to 4 person)";
 }
 
@@ -81,10 +81,6 @@ export async function POST(req: NextRequest) {
       <tr style="border-bottom: 1px solid #EDE4D3;">
         <td style="padding: 12px 0; color: #8B8070;">Tent Size</td>
         <td style="padding: 12px 0;">${tentLabel(m.tentType ?? "standard")}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;">
-        <td style="padding: 12px 0; color: #8B8070;">Electric Hookup</td>
-        <td style="padding: 12px 0;">${m.hookup === "yes" ? "Yes (+$20/night)" : "No"}</td>
       </tr>
       <tr style="border-bottom: 1px solid #EDE4D3;">
         <td style="padding: 12px 0; color: #8B8070;">Booking Type</td>

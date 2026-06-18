@@ -200,3 +200,11 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 - Text/links and the hamburger lines are now always light (`rgba(255,255,255,0.92)`). Reserve button switched to solid gold `#D4A853` with dark text so it pops on the green bar.
 - `scrolled` state retained only for the subtle 112px→88px height shrink on scroll (background is fully stationary).
 - Mobile full-screen overlay menu left as-is (cream `#FDFAF5` with dark links) — green top bar sits above it. Can be made green too if desired.
+
+### 2026-06-18 — Navbar no longer overlaps content; booking tent/hookup edits
+
+- **Navbar overlap fix:** with the bar now a solid green, `position: fixed` made it float over the top of every hero image. Switched it to `position: sticky` so it occupies its own space in normal flow — every page's hero/content now sits cleanly below it, no overlap, while the bar still pins to the top on scroll. Removed the now-unused `scrolled` state + scroll listener (background no longer changes); nav height is a constant `100px`. Mobile overlay top spacer bumped 80→100px to match.
+- Homepage full-bleed hero changed `height: 100vh` → `calc(100vh - 100px)` (minHeight 700→640) so bar + hero fill exactly one screen.
+- **Booking page tent sizes:** kept Standard (up to 4) / Large (up to 8); renamed last option "XL / Cabin Tent" → **"XL Tent"** (also updated `tentLabel()` in the confirmation email).
+- **Electric hookup removed entirely** from the booking flow: form `FormData.hookup` field, `initialForm`, `PRICING.hookup`, the price calc, the UI `<select>`, the review-summary row (border logic switched to `arr.length-1`), the price caption, the checkout-session metadata (`create-checkout-session/route.ts`), and the confirmation-email row (`send-confirmation/route.ts`). No `hookup` refs remain in the booking flow. (The "Electric Hookups" *amenity* on home/about/footer/FAQ is unrelated and untouched.)
+- Verified: `next build` compiled all pages successfully; `npx tsc --noEmit` passes clean (EXIT 0) after deleting the stray local `node_modules/@types/react 2` + `react-dom 2` duplicate folders (Finder/iCloud artifact, not committed — Vercel's clean install is unaffected). Dev server could not bind a port in this sandbox, so verification was via build + typecheck rather than a live browser.

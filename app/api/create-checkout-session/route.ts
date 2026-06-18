@@ -36,7 +36,6 @@ export async function POST(req: NextRequest) {
         guests: form.guests,
         vehicles: form.vehicles,
         tentType: form.tentType,
-        hookup: form.hookup,
         groupType: form.groupType,
         notes: form.notes || "",
         waiverSigned: "true",

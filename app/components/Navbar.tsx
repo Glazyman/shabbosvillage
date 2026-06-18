@@ -12,14 +12,7 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -32,12 +25,11 @@ export default function Navbar() {
     <>
       <header
         style={{
-          position: "fixed",
+          position: "sticky",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 100,
-          transition: "all 0.5s ease",
           backgroundColor: "#1a2a0f",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
@@ -47,11 +39,10 @@ export default function Navbar() {
             maxWidth: "1200px",
             margin: "0 auto",
             padding: "0 clamp(20px, 5vw, 40px)",
-            height: scrolled ? "88px" : "112px",
+            height: "100px",
             display: "grid",
             gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            transition: "height 0.5s ease",
           }}
         >
           {/* Logo — left */}
@@ -112,7 +103,7 @@ export default function Navbar() {
         }}
       >
         {/* Spacer for the header bar */}
-        <div style={{ height: "80px", flexShrink: 0 }} />
+        <div style={{ height: "100px", flexShrink: 0 }} />
 
         {/* Links */}
         <nav style={{ flex: 1, display: "flex", flexDirection: "column", padding: "32px 32px 0" }}>
