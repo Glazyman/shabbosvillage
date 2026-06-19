@@ -12,9 +12,9 @@ export default function Footer() {
             <span className="footer-brand-word">Shabbos</span>
             <Image
               src="/lantern.png"
-              alt="Shabbos Village lantern"
-              width={62}
-              height={91}
+              alt="Shabbos Village lamp post"
+              width={52}
+              height={119}
               className="footer-lantern"
               style={{ objectFit: "contain" }}
             />

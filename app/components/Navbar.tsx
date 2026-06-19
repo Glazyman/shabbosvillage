@@ -50,9 +50,9 @@ export default function Navbar() {
             <span className="brand-word">Shabbos</span>
             <Image
               src="/lantern.png"
-              alt="Shabbos Village lantern"
-              width={40}
-              height={59}
+              alt="Shabbos Village lamp post"
+              width={36}
+              height={82}
               priority
               className="nav-lantern"
               style={{ objectFit: "contain" }}

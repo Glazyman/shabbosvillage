@@ -162,7 +162,7 @@ body {
 
 /* Brand lockup: SHABBOS · lantern · VILLAGE */
 .nav-brand     { gap: 14px; }
-.nav-lantern   { width: 40px; height: 59px; }
+.nav-lantern   { width: 36px; height: 82px; }
 .brand-word, .footer-brand-word {
   font-family: var(--font-playfair);
   font-weight: 600;
@@ -181,7 +181,7 @@ body {
   /* Shorter bar + smaller brand so the header doesn't eat the phone screen */
   :root          { --nav-h: 68px; }
   .nav-brand     { gap: 9px !important; }
-  .nav-lantern   { width: 27px !important; height: 40px !important; }
+  .nav-lantern   { width: 25px !important; height: 56px !important; }
   .brand-word    { font-size: 0.72rem !important; letter-spacing: 0.12em !important; }
 }
 
@@ -306,7 +306,7 @@ div:hover > .gallery-caption-overlay {
   .footer-brand p { max-width: 100% !important; }
   .footer-brand-lockup { gap: 11px !important; }
   .footer-brand-word { font-size: 0.98rem !important; letter-spacing: 0.14em !important; }
-  .footer-lantern { width: 46px !important; height: 67px !important; }
+  .footer-lantern { width: 40px !important; height: 92px !important; }
 
   .footer-links-grid {
     grid-template-columns: 1fr 1fr !important;
