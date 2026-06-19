@@ -221,6 +221,11 @@ Added a real backend so bookings can never overbook the campground. **New tech: 
 - **Date picker (round-trip constraint):** booking form arrival input floors at today; departure is disabled until arrival is chosen, then its `min` = arrival + 1 day (≥1 night), so earlier dates are greyed out. Changing arrival auto-clears a now-invalid departure. Timezone-safe local `todayStr()`/`addDays()` helpers in `app/book/page.tsx`. Email verified working (Resend test send succeeded; domain verified).
 - **STILL PENDING (owner):** (1) ~~Verify the `shabbosvillage.com` domain in Resend~~ — DONE (verified, test email sent successfully) ([resend.com/domains](https://resend.com/domains) + DNS) or confirmation emails silently fail (bookings still save/charge). (2) Do one **real test booking + refund** (keys are LIVE; Stripe test cards won't work in live mode). (3) Group-rental (whole/half/camp) holds are confirmed manually in the Supabase dashboard — no admin UI yet.
 
+### 2026-06-19 — Flat tent pricing ($85/night, all sizes)
+
+- Pricing is now **$85 per tent, per night, flat** — no per-size difference (was Small $85 / Medium $100 / Large $120). Sizes still differ in guest capacity (2/4/8 people), just not price.
+- Single-source change in `lib/booking.ts`: added `TENT_PRICE_PER_NIGHT = 85` and pointed all three `TENT_SIZES[*].price` at it. Everything downstream (`perNightDollars` → `calcRegularTotalCents`, server total in `create-checkout-session`, Stripe `unit_amount`, the client `$total`/per-tent line, confirmation email) reads from those constants, so no other files needed editing.
+
 ### 2026-06-18 — Navbar no longer overlaps content; booking tent/hookup edits
 
 - **Navbar overlap fix:** with the bar now a solid green, `position: fixed` made it float over the top of every hero image. Switched it to `position: sticky` so it occupies its own space in normal flow — every page's hero/content now sits cleanly below it, no overlap, while the bar still pins to the top on scroll. Removed the now-unused `scrolled` state + scroll listener (background no longer changes); nav height is a constant `100px`. Mobile overlay top spacer bumped 80→100px to match.

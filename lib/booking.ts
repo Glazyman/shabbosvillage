@@ -4,10 +4,14 @@
 
 export const CAPACITY = 50; // total tent sites
 
+// Flat pricing: every tent is $85/night regardless of size. Sizes differ only
+// in guest capacity, not price.
+export const TENT_PRICE_PER_NIGHT = 85;
+
 export const TENT_SIZES = {
-  small: { label: "Small", price: 85, people: 2 },
-  medium: { label: "Medium", price: 100, people: 4 },
-  large: { label: "Large", price: 120, people: 8 },
+  small: { label: "Small", price: TENT_PRICE_PER_NIGHT, people: 2 },
+  medium: { label: "Medium", price: TENT_PRICE_PER_NIGHT, people: 4 },
+  large: { label: "Large", price: TENT_PRICE_PER_NIGHT, people: 8 },
 } as const;
 
 export type TentSize = keyof typeof TENT_SIZES;
