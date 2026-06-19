@@ -225,6 +225,8 @@ Added a real backend so bookings can never overbook the campground. **New tech: 
 
 - Pricing is now **$85 per tent, per night, flat** — no per-size difference (was Small $85 / Medium $100 / Large $120). Sizes still differ in guest capacity (2/4/8 people), just not price.
 - Single-source change in `lib/booking.ts`: added `TENT_PRICE_PER_NIGHT = 85` and pointed all three `TENT_SIZES[*].price` at it. Everything downstream (`perNightDollars` → `calcRegularTotalCents`, server total in `create-checkout-session`, Stripe `unit_amount`, the client `$total`/per-tent line, confirmation email) reads from those constants, so no other files needed editing.
+- **New lamp-post logo (transparent).** Replaced both `public/logo.png` (navbar) and `public/logo-footer.png` (footer) with a new ChatGPT-generated ornate lamp-post + "SHABBOS VILLAGE" design. Ran the existing `_brain/renders/make_transparent_logo.py` (edge flood-fill + tight color-match for enclosed letter counters) on the 1254×1254 source — tan bg `[225,203,183]` removed, lantern glow preserved. Verified clean over both cream and footer-green (no counter blobs, white text reads on green). Downscaled to 660×660, optimized → ~109 KB each. Both nav and footer sit on green `#1a2a0f` so the cream wordmark shows white.
+- **Push note:** normal `git push origin main` worked this session (remote was in sync); the old "always force push" rule did not apply. Force-push to main is now blocked by the auto-mode classifier — use a normal push.
 
 ### 2026-06-18 — Navbar no longer overlaps content; booking tent/hookup edits
 
