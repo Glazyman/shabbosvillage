@@ -45,17 +45,19 @@ export default function Navbar() {
             alignItems: "center",
           }}
         >
-          {/* Logo — left */}
-          <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: "none", display: "flex", alignItems: "center", zIndex: 110 }}>
+          {/* Brand lockup — SHABBOS · lantern · VILLAGE — left */}
+          <Link href="/" onClick={() => setOpen(false)} className="nav-brand" style={{ textDecoration: "none", display: "flex", alignItems: "center", justifySelf: "start", zIndex: 110 }}>
+            <span className="brand-word">Shabbos</span>
             <Image
-              src="/logo.png"
-              alt="Shabbos Village"
-              width={96}
-              height={96}
+              src="/lantern.png"
+              alt="Shabbos Village lantern"
+              width={40}
+              height={59}
               priority
-              className="nav-logo"
+              className="nav-lantern"
               style={{ objectFit: "contain" }}
             />
+            <span className="brand-word">Village</span>
           </Link>
 
           {/* Desktop links — center */}

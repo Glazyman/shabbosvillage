@@ -6,17 +6,20 @@ export default function Footer() {
     <footer style={{ backgroundColor: "#1a2a0f", color: "#FDFAF5", padding: "clamp(40px,6vw,80px) clamp(24px,5vw,60px) clamp(24px,4vw,40px)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
 
-        {/* Brand */}
+        {/* Brand — SHABBOS · lantern · VILLAGE */}
         <div className="footer-brand" style={{ marginBottom: "48px" }}>
-          <div style={{ marginBottom: "16px" }}>
+          <Link href="/" className="footer-brand-lockup" style={{ display: "inline-flex", alignItems: "center", gap: "16px", textDecoration: "none", marginBottom: "16px" }}>
+            <span className="footer-brand-word">Shabbos</span>
             <Image
-              src="/logo-footer.png"
-              alt="Shabbos Village"
-              width={220}
-              height={220}
+              src="/lantern.png"
+              alt="Shabbos Village lantern"
+              width={62}
+              height={91}
+              className="footer-lantern"
               style={{ objectFit: "contain" }}
             />
-          </div>
+            <span className="footer-brand-word">Village</span>
+          </Link>
           <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(253,250,245,0.55)", maxWidth: "280px" }}>
             A peaceful Shabbos camping experience in nature. Disconnect. Reconnect.
           </p>

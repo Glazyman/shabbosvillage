@@ -159,15 +159,30 @@ body {
 .nav-desktop   { display: flex; align-items: center; gap: 40px; }
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; }
 .nav-overlay   { display: none; }
-.nav-logo      { width: 96px; height: 96px; }
+
+/* Brand lockup: SHABBOS · lantern · VILLAGE */
+.nav-brand     { gap: 14px; }
+.nav-lantern   { width: 40px; height: 59px; }
+.brand-word, .footer-brand-word {
+  font-family: var(--font-playfair);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
+}
+.brand-word        { font-size: 1.02rem; }
+.footer-brand-word { font-size: 1.25rem; letter-spacing: 0.2em; }
 
 @media (max-width: 768px) {
   .nav-desktop   { display: none !important; }
   .nav-hamburger { display: flex !important; }
   .nav-overlay   { display: flex !important; }
-  /* Shorter bar + smaller logo so the header doesn't eat the phone screen */
+  /* Shorter bar + smaller brand so the header doesn't eat the phone screen */
   :root          { --nav-h: 68px; }
-  .nav-logo      { width: 50px !important; height: 50px !important; }
+  .nav-brand     { gap: 9px !important; }
+  .nav-lantern   { width: 27px !important; height: 40px !important; }
+  .brand-word    { font-size: 0.72rem !important; letter-spacing: 0.12em !important; }
 }
 
 /* ── AMENITIES GRID ── */
@@ -289,6 +304,9 @@ div:hover > .gallery-caption-overlay {
   }
   .footer-brand > div { justify-content: center; }
   .footer-brand p { max-width: 100% !important; }
+  .footer-brand-lockup { gap: 11px !important; }
+  .footer-brand-word { font-size: 0.98rem !important; letter-spacing: 0.14em !important; }
+  .footer-lantern { width: 46px !important; height: 67px !important; }
 
   .footer-links-grid {
     grid-template-columns: 1fr 1fr !important;
