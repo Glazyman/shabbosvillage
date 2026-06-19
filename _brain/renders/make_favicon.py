@@ -6,7 +6,7 @@ transparent gap that separates the lamp from the text."""
 import numpy as np
 from PIL import Image
 
-SRC = "_brain/renders/logo-transparent-preview.png"
+SRC = "_brain/renders/logo-new-transparent.png"
 img = Image.open(SRC).convert("RGBA")
 a = np.array(img)[:, :, 3]
 H, W = a.shape
@@ -16,13 +16,25 @@ row_has = (a > 40).sum(axis=1) > 3
 rows = np.where(row_has)[0]
 top = int(rows[0])
 
-# Walk down from the first content row; stop at the first sizable transparent gap
-# (that gap is between the lamp base and the wordmark).
+# Walk down from the first content row. Stop at the first sizable transparent gap
+# OR where the content width suddenly explodes — in this logo the SHABBOS VILLAGE
+# wordmark sits BESIDE the lamp's lower bracket (no clean gap), so it shows up as a
+# row far wider than the lamp itself. Cut before that so the crop is lamp-only.
 GAP = max(8, H // 80)
+
+def row_width(y):
+    cols = np.where(a[y] > 40)[0]
+    return 0 if len(cols) == 0 else int(cols[-1] - cols[0])
+
 end = top
 run_gap = 0
+max_w = 1
 for y in range(top, H):
     if row_has[y]:
+        w = row_width(y)
+        if w > 2.0 * max_w and max_w > 20:  # text band — much wider than the lamp
+            break
+        max_w = max(max_w, w)
         end = y
         run_gap = 0
     else:
