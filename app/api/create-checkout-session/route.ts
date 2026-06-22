@@ -4,11 +4,11 @@ import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import {
   calcRegularTotalCents,
   nightsBetween,
-  totalTents,
-  tentSummary,
+  totalPlots,
+  plotSummary,
   validateRegular,
   HOLD_MINUTES,
-  type TentCounts,
+  type PlotCounts,
 } from "@/lib/booking";
 
 export const dynamic = "force-dynamic";
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     const { form } = await req.json();
 
     // --- Server-authoritative validation (never trust the client) ---
-    const tents: TentCounts = {
+    const plots: PlotCounts = {
       small: Math.max(0, parseInt(form?.small) || 0),
       medium: Math.max(0, parseInt(form?.medium) || 0),
       large: Math.max(0, parseInt(form?.large) || 0),
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const arrival = String(form?.arrivalDate || "");
     const departure = String(form?.departureDate || "");
 
-    const validationError = validateRegular(tents, cars, arrival, departure);
+    const validationError = validateRegular(plots, cars, arrival, departure);
     if (validationError) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
@@ -37,8 +37,8 @@ export async function POST(req: NextRequest) {
     }
 
     const nights = nightsBetween(arrival, departure);
-    const sites = totalTents(tents);
-    const amountCents = calcRegularTotalCents(tents, nights); // server-computed total
+    const sites = totalPlots(plots);
+    const amountCents = calcRegularTotalCents(plots, nights); // server-computed total
 
     // --- Atomically reserve capacity (creates a short-lived hold) ---
     const supabase = getSupabaseAdmin();
@@ -47,9 +47,9 @@ export async function POST(req: NextRequest) {
       p_arrival: arrival,
       p_departure: departure,
       p_sites: sites,
-      p_small: tents.small,
-      p_medium: tents.medium,
-      p_large: tents.large,
+      p_small: plots.small,
+      p_medium: plots.medium,
+      p_large: plots.large,
       p_guests: guests,
       p_cars: cars,
       p_amount_cents: amountCents,
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
     if (holdError) throw holdError;
     if (!bookingId) {
       return NextResponse.json(
-        { error: "Sorry — those dates are full for the number of tents requested. Please try fewer tents or different dates." },
+        { error: "Sorry — those dates are full for the number of plots requested. Please try fewer plots or different dates." },
         { status: 409 }
       );
     }
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       apiVersion: "2026-05-27.dahlia",
     });
 
-    const summary = tentSummary(tents);
+    const summary = plotSummary(plots);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Shabbos Village — Camping Reservation",
+              name: "Shabbos Village — Plot Reservation",
               description: `${form.firstName} ${form.lastName} | ${arrival} → ${departure} | ${nights} night${nights > 1 ? "s" : ""} | ${summary} | ${guests} guest${guests > 1 ? "s" : ""}`,
             },
             unit_amount: amountCents,
@@ -103,10 +103,10 @@ export async function POST(req: NextRequest) {
         nights: String(nights),
         guests: String(guests),
         cars: String(cars),
-        small: String(tents.small),
-        medium: String(tents.medium),
-        large: String(tents.large),
-        tents: String(sites),
+        small: String(plots.small),
+        medium: String(plots.medium),
+        large: String(plots.large),
+        plots: String(sites),
         notes: String(form.notes || "").slice(0, 480),
         waiverSigned: "true",
       },

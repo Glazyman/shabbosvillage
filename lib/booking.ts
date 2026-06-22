@@ -1,25 +1,31 @@
 // Shared booking constants + pure helpers. Imported by both the client form and
 // the server API routes. The SERVER is always authoritative (it recomputes
 // totals and re-validates); the client uses these only for display/UX.
+//
+// PRICING MODEL: we rent PLOTS OF LAND, not tents. You pay $85 per plot, per
+// night — flat, no matter how many tents you pitch on it. A plot's size just
+// tells you what tent fits: a small plot fits a small tent, etc. Want more
+// room? Rent more plots ($85 each). Capacity is measured in plots (1 plot = 1
+// of the 50 sites).
 
-export const CAPACITY = 50; // total tent sites
+export const CAPACITY = 50; // total plots
 
-// Flat pricing: every tent is $85/night regardless of size. Sizes differ only
-// in guest capacity, not price.
-export const TENT_PRICE_PER_NIGHT = 85;
+// Flat pricing: every plot is $85/night regardless of size. Sizes differ only
+// in how big a tent fits, not in price.
+export const PLOT_PRICE_PER_NIGHT = 85;
 
-export const TENT_SIZES = {
-  small: { label: "Small", price: TENT_PRICE_PER_NIGHT, people: 2 },
-  medium: { label: "Medium", price: TENT_PRICE_PER_NIGHT, people: 4 },
-  large: { label: "Large", price: TENT_PRICE_PER_NIGHT, people: 8 },
+export const PLOT_SIZES = {
+  small: { label: "Small plot", price: PLOT_PRICE_PER_NIGHT, people: 2, fits: "fits a small tent" },
+  medium: { label: "Medium plot", price: PLOT_PRICE_PER_NIGHT, people: 4, fits: "fits a medium tent" },
+  large: { label: "Large plot", price: PLOT_PRICE_PER_NIGHT, people: 8, fits: "fits a large tent" },
 } as const;
 
-export type TentSize = keyof typeof TENT_SIZES;
-export const TENT_ORDER: TentSize[] = ["small", "medium", "large"];
+export type PlotSize = keyof typeof PLOT_SIZES;
+export const PLOT_ORDER: PlotSize[] = ["small", "medium", "large"];
 
-export type TentCounts = { small: number; medium: number; large: number };
+export type PlotCounts = { small: number; medium: number; large: number };
 
-// How many of the 50 sites each rental type consumes (regular = its tent count).
+// How many of the 50 plots each rental type consumes (regular = its plot count).
 export const RENTAL_SITES = { whole: CAPACITY, half: CAPACITY / 2 } as const;
 
 export type BookingKind = "regular" | "whole" | "half" | "camp";
@@ -28,7 +34,7 @@ export type BookingKind = "regular" | "whole" | "half" | "camp";
 // for the owner to confirm + arrange payment.
 export const HOLD_MINUTES = { regular: 30, group: 60 * 48 } as const;
 
-export const MAX_CARS_PER_TENT = 2;
+export const MAX_CARS_PER_PLOT = 2;
 
 export function nightsBetween(arrival: string, departure: string): number {
   if (!arrival || !departure) return 0;
@@ -38,44 +44,44 @@ export function nightsBetween(arrival: string, departure: string): number {
   return Math.round((d - a) / 86_400_000);
 }
 
-export function totalTents(t: TentCounts): number {
+export function totalPlots(t: PlotCounts): number {
   return (t.small || 0) + (t.medium || 0) + (t.large || 0);
 }
 
-export function maxGuests(t: TentCounts): number {
+export function maxGuests(t: PlotCounts): number {
   return (
-    (t.small || 0) * TENT_SIZES.small.people +
-    (t.medium || 0) * TENT_SIZES.medium.people +
-    (t.large || 0) * TENT_SIZES.large.people
+    (t.small || 0) * PLOT_SIZES.small.people +
+    (t.medium || 0) * PLOT_SIZES.medium.people +
+    (t.large || 0) * PLOT_SIZES.large.people
   );
 }
 
-// Per-night price in whole dollars for a set of tents.
-export function perNightDollars(t: TentCounts): number {
+// Per-night price in whole dollars for a set of plots.
+export function perNightDollars(t: PlotCounts): number {
   return (
-    (t.small || 0) * TENT_SIZES.small.price +
-    (t.medium || 0) * TENT_SIZES.medium.price +
-    (t.large || 0) * TENT_SIZES.large.price
+    (t.small || 0) * PLOT_SIZES.small.price +
+    (t.medium || 0) * PLOT_SIZES.medium.price +
+    (t.large || 0) * PLOT_SIZES.large.price
   );
 }
 
-export function calcRegularTotalCents(t: TentCounts, nights: number): number {
+export function calcRegularTotalCents(t: PlotCounts, nights: number): number {
   return Math.round(perNightDollars(t) * Math.max(0, nights) * 100);
 }
 
 // Returns an error string if the regular booking is invalid, else null.
-export function validateRegular(t: TentCounts, cars: number, arrival: string, departure: string): string | null {
-  const tents = totalTents(t);
-  if (tents < 1) return "Please add at least one tent.";
+export function validateRegular(t: PlotCounts, cars: number, arrival: string, departure: string): string | null {
+  const plots = totalPlots(t);
+  if (plots < 1) return "Please add at least one plot.";
   if (nightsBetween(arrival, departure) < 1) return "Please choose valid arrival and departure dates.";
   const carsN = Math.max(0, Math.floor(cars || 0));
-  if (carsN > tents * MAX_CARS_PER_TENT) {
-    return `Up to ${MAX_CARS_PER_TENT} cars per tent — max ${tents * MAX_CARS_PER_TENT} for ${tents} tent${tents > 1 ? "s" : ""}.`;
+  if (carsN > plots * MAX_CARS_PER_PLOT) {
+    return `Up to ${MAX_CARS_PER_PLOT} cars per plot — max ${plots * MAX_CARS_PER_PLOT} for ${plots} plot${plots > 1 ? "s" : ""}.`;
   }
   return null;
 }
 
-// Sites consumed by a group request.
+// Plots consumed by a group request.
 export function groupSites(kind: BookingKind, campSites: number): number {
   if (kind === "whole") return RENTAL_SITES.whole;
   if (kind === "half") return RENTAL_SITES.half;
@@ -83,8 +89,8 @@ export function groupSites(kind: BookingKind, campSites: number): number {
   return 0;
 }
 
-export function tentSummary(t: TentCounts): string {
-  return TENT_ORDER.filter((k) => (t[k] || 0) > 0)
-    .map((k) => `${t[k]} ${TENT_SIZES[k].label}`)
+export function plotSummary(t: PlotCounts): string {
+  return PLOT_ORDER.filter((k) => (t[k] || 0) > 0)
+    .map((k) => `${t[k]} ${PLOT_SIZES[k].label}`)
     .join(", ");
 }

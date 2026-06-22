@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { tentSummary } from "@/lib/booking";
+import { plotSummary } from "@/lib/booking";
 
 const OWNER_EMAIL = process.env.OWNER_EMAIL ?? "info@shabbosvillage.com";
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "Shabbos Village <bookings@shabbosvillage.com>";
@@ -29,7 +29,7 @@ export type BookingRow = {
 };
 
 const KIND_LABEL: Record<BookingRow["kind"], string> = {
-  regular: "Tent reservation",
+  regular: "Plot reservation",
   whole: "Whole campground (private)",
   half: "Half campground",
   camp: "Camp / organization",
@@ -39,9 +39,9 @@ function fullName(b: BookingRow) {
   return `${b.first_name ?? ""} ${b.last_name ?? ""}`.trim();
 }
 
-function tentsLine(b: BookingRow) {
-  const s = tentSummary({ small: b.small, medium: b.medium, large: b.large });
-  return s || `${b.sites} site${b.sites !== 1 ? "s" : ""}`;
+function plotsLine(b: BookingRow) {
+  const s = plotSummary({ small: b.small, medium: b.medium, large: b.large });
+  return s || `${b.sites} plot${b.sites !== 1 ? "s" : ""}`;
 }
 
 function resend() {
@@ -66,7 +66,7 @@ export async function sendBookingConfirmation(b: BookingRow) {
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Phone</td><td style="padding: 12px 0;">${b.phone ?? "—"}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Arrival</td><td style="padding: 12px 0;">${b.arrival_date}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Departure</td><td style="padding: 12px 0;">${b.departure_date}</td></tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Tents</td><td style="padding: 12px 0;">${tentsLine(b)} (${b.sites} site${b.sites !== 1 ? "s" : ""})</td></tr>
+      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Plots</td><td style="padding: 12px 0;">${plotsLine(b)} (${b.sites} plot${b.sites !== 1 ? "s" : ""})</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Guests</td><td style="padding: 12px 0;">${b.guests}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Cars</td><td style="padding: 12px 0;">${b.cars}</td></tr>
       ${b.notes ? `<tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Notes</td><td style="padding: 12px 0;">${b.notes}</td></tr>` : ""}
@@ -90,7 +90,7 @@ export async function sendBookingConfirmation(b: BookingRow) {
     <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-bottom: 32px;">
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070; width: 40%;">Arrival</td><td style="padding: 12px 0; font-weight: 600;">${b.arrival_date}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Departure</td><td style="padding: 12px 0; font-weight: 600;">${b.departure_date}</td></tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Tents</td><td style="padding: 12px 0;">${tentsLine(b)}</td></tr>
+      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Plots</td><td style="padding: 12px 0;">${plotsLine(b)}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Guests</td><td style="padding: 12px 0;">${b.guests}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Cars</td><td style="padding: 12px 0;">${b.cars}</td></tr>
       <tr><td style="padding: 16px 0; color: #2D5016; font-weight: 700;">Total Paid</td><td style="padding: 16px 0; color: #2D5016; font-weight: 700; font-size: 1.2rem;">$${total.toFixed(2)}</td></tr>
@@ -143,14 +143,14 @@ export async function sendGroupRequest(b: BookingRow) {
   <div style="max-width: 600px; margin: 0 auto; padding: 40px 32px;">
     <p style="font-size: 0.75rem; font-weight: bold; letter-spacing: 0.15em; text-transform: uppercase; color: #8B5E3C; margin-bottom: 8px;">Group Rental Request</p>
     <h1 style="font-size: 1.8rem; font-weight: 700; color: #2D5016; margin: 0 0 24px;">${kindLabel}</h1>
-    <p style="font-size: 0.95rem; color: #4a4a3a; line-height: 1.7; margin-bottom: 24px;">This request is holding <strong>${b.sites} of ${50} site${b.sites !== 1 ? "s" : ""}</strong> for the dates below for the next 48 hours. Confirm it in Supabase and send a payment link, or it will auto-expire and release the dates.</p>
+    <p style="font-size: 0.95rem; color: #4a4a3a; line-height: 1.7; margin-bottom: 24px;">This request is holding <strong>${b.sites} of ${50} plot${b.sites !== 1 ? "s" : ""}</strong> for the dates below for the next 48 hours. Confirm it in Supabase and send a payment link, or it will auto-expire and release the dates.</p>
     <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070; width: 40%;">Contact</td><td style="padding: 12px 0; font-weight: 600;">${guestName}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Email</td><td style="padding: 12px 0;"><a href="mailto:${guestEmail}" style="color: #2D5016;">${guestEmail}</a></td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Phone</td><td style="padding: 12px 0;">${b.phone ?? "—"}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Arrival</td><td style="padding: 12px 0;">${b.arrival_date}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Departure</td><td style="padding: 12px 0;">${b.departure_date}</td></tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Sites held</td><td style="padding: 12px 0;">${b.sites}</td></tr>
+      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Plots held</td><td style="padding: 12px 0;">${b.sites}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Guests (est.)</td><td style="padding: 12px 0;">${b.guests}</td></tr>
       ${b.notes ? `<tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Notes</td><td style="padding: 12px 0;">${b.notes}</td></tr>` : ""}
     </table>
