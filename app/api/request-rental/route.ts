@@ -37,6 +37,7 @@ export async function POST(req: NextRequest) {
       p_small: 0,
       p_medium: 0,
       p_large: 0,
+      p_rv: 0,
       p_guests: guests,
       p_cars: 0,
       p_amount_cents: null,

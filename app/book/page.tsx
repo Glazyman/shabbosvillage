@@ -7,6 +7,7 @@ import {
   PLOT_SIZES,
   PLOT_ORDER,
   PLOT_PRICE_PER_NIGHT,
+  RV_PRICE_PER_NIGHT,
   nightsBetween,
   totalPlots,
   calcRegularTotalCents,
@@ -28,6 +29,7 @@ type FormData = {
   small: string;
   medium: string;
   large: string;
+  rv: string;
   campSites: string;
   guests: string;
   cars: string;
@@ -40,14 +42,14 @@ const initialForm: FormData = {
   kind: "regular",
   firstName: "", lastName: "", email: "", phone: "",
   arrivalDate: "", departureDate: "",
-  small: "1", medium: "0", large: "0",
+  small: "1", medium: "0", large: "0", rv: "0",
   campSites: "10",
   guests: "1", cars: "1", notes: "",
   waiverSigned: false, waiverSignature: "",
 };
 
 const RENTAL_OPTIONS: { kind: BookingKind; title: string; desc: string }[] = [
-  { kind: "regular", title: "Rent a plot", desc: `$${PLOT_PRICE_PER_NIGHT} per plot, per night — pay online. Bring your own tent.` },
+  { kind: "regular", title: "Tent plot or RV spot", desc: `Tent plots $${PLOT_PRICE_PER_NIGHT}/night, RV spots $${RV_PRICE_PER_NIGHT}/night — pay online.` },
   { kind: "whole", title: "Whole campground", desc: "Private — all 50 plots. Request a quote." },
   { kind: "half", title: "Half campground", desc: "~25 plots for your group. Request a quote." },
   { kind: "camp", title: "Camp / Organization", desc: "Choose how many plots. Request a quote." },
@@ -72,6 +74,7 @@ export default function BookPage() {
     small: Math.max(0, parseInt(form.small) || 0),
     medium: Math.max(0, parseInt(form.medium) || 0),
     large: Math.max(0, parseInt(form.large) || 0),
+    rv: Math.max(0, parseInt(form.rv) || 0),
   };
   const plotCount = totalPlots(plots);
   const nights = nightsBetween(form.arrivalDate, form.departureDate);
@@ -289,7 +292,7 @@ export default function BookPage() {
               Plan your stay
             </h2>
             <p style={{ fontSize: "0.9rem", color: "#8B8070", marginBottom: "40px" }}>
-              {isGroup ? "Choose your dates and group size — we'll confirm and send a quote." : `Choose your dates and the plots you need — $${PLOT_PRICE_PER_NIGHT} per plot, per night.`}
+              {isGroup ? "Choose your dates and group size — we'll confirm and send a quote." : `Choose your dates and the sites you need — tent plots $${PLOT_PRICE_PER_NIGHT}/night, RV spots $${RV_PRICE_PER_NIGHT}/night.`}
             </p>
 
             <div className="form-two-col" style={{ marginBottom: "8px" }}>
@@ -331,7 +334,7 @@ export default function BookPage() {
 
             {!isGroup && (
               <div style={{ marginBottom: "28px" }}>
-                <label style={labelStyle}>Plots</label>
+                <label style={labelStyle}>Plots &amp; RV Spots</label>
                 <div style={{ border: "1px solid #EDE4D3", borderRadius: "4px", overflow: "hidden" }}>
                   {PLOT_ORDER.map((size, i) => (
                     <div key={size} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", padding: "14px 18px", borderBottom: i < PLOT_ORDER.length - 1 ? "1px solid #EDE4D3" : "none" }}>
@@ -344,7 +347,7 @@ export default function BookPage() {
                   ))}
                 </div>
                 <p style={{ fontSize: "0.82rem", color: "#6b6b55", marginTop: "8px" }}>
-                  {plotCount} plot{plotCount !== 1 ? "s" : ""} selected{nights > 0 ? ` · $${total} for ${nights} night${nights !== 1 ? "s" : ""}` : ""}
+                  {plotCount} site{plotCount !== 1 ? "s" : ""} selected{nights > 0 ? ` · $${total} for ${nights} night${nights !== 1 ? "s" : ""}` : ""}
                 </p>
               </div>
             )}
@@ -410,8 +413,8 @@ export default function BookPage() {
                 { label: "Departure", value: form.departureDate || "—" },
                 { label: "Nights", value: `${nights} night${nights !== 1 ? "s" : ""}` },
                 ...(isGroup
-                  ? [{ label: "Plots", value: String(sitesNeeded) }]
-                  : [{ label: "Plots", value: plotSummary(plots) || "—" }, { label: "Cars", value: form.cars }]),
+                  ? [{ label: "Sites", value: String(sitesNeeded) }]
+                  : [{ label: "Sites", value: plotSummary(plots) || "—" }, { label: "Cars", value: form.cars }]),
                 { label: "Guests", value: form.guests },
               ].map((row, i, arr) => (
                 <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "14px 0", borderBottom: i < arr.length - 1 ? "1px solid #EDE4D3" : "none" }}>
@@ -426,7 +429,7 @@ export default function BookPage() {
                     <span style={{ fontFamily: "var(--font-playfair)", fontSize: "2.2rem", fontWeight: 700, color: "#2D5016" }}>${total}</span>
                   </div>
                   <p style={{ fontSize: "0.78rem", color: "#8B8070", marginTop: "6px", textAlign: "right" }}>
-                    {plotCount} plot{plotCount !== 1 ? "s" : ""} × ${PLOT_PRICE_PER_NIGHT} × {nights} night{nights !== 1 ? "s" : ""}
+                    {plotSummary(plots)} × {nights} night{nights !== 1 ? "s" : ""}
                   </p>
                 </>
               )}

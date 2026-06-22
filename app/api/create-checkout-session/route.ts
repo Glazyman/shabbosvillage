@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
       small: Math.max(0, parseInt(form?.small) || 0),
       medium: Math.max(0, parseInt(form?.medium) || 0),
       large: Math.max(0, parseInt(form?.large) || 0),
+      rv: Math.max(0, parseInt(form?.rv) || 0),
     };
     const cars = Math.max(0, parseInt(form?.cars) || 0);
     const guests = Math.max(1, parseInt(form?.guests) || 1);
@@ -50,6 +51,7 @@ export async function POST(req: NextRequest) {
       p_small: plots.small,
       p_medium: plots.medium,
       p_large: plots.large,
+      p_rv: plots.rv,
       p_guests: guests,
       p_cars: cars,
       p_amount_cents: amountCents,
@@ -106,6 +108,7 @@ export async function POST(req: NextRequest) {
         small: String(plots.small),
         medium: String(plots.medium),
         large: String(plots.large),
+        rv: String(plots.rv),
         plots: String(sites),
         notes: String(form.notes || "").slice(0, 480),
         waiverSigned: "true",

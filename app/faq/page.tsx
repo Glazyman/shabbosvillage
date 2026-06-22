@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const faqs: { q: string; a: string; download?: { href: string; label: string } }[] = [
-  { q: "How does pricing work?", a: "You rent a plot of land — $85 per plot, per night — and bring your own tent and gear. It's a flat price per plot no matter how many people are on it. Plots come in three sizes: small (fits a small tent), medium (fits a medium tent), and large (fits a large tent). Need more room? Rent as many plots as you'd like, $85 each per night, subject to availability." },
+  { q: "How does pricing work?", a: "You rent a plot of land — $85 per plot, per night — and bring your own tent and gear. It's a flat price per plot no matter how many people are on it. Plots come in three sizes: small (fits a small tent), medium (fits a medium tent), and large (fits a large tent). Prefer to bring an RV or camper? RV spots are $100 per night. Need more room? Rent as many plots or RV spots as you'd like, subject to availability." },
   { q: "Are there bathrooms and showers?", a: "Yes. Central toilet and shower facilities are clean, maintained, and available to all guests throughout their stay." },
   { q: "Is electricity available?", a: "Yes. Electric hookup sites are available for an additional fee. We also have central charging stations. We encourage unplugging for the full Shabbos experience." },
   { q: "Are pets allowed?", a: "To maintain a peaceful and safe environment for all families, pets are not permitted at this time." },

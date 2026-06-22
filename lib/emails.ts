@@ -15,6 +15,7 @@ export type BookingRow = {
   small: number;
   medium: number;
   large: number;
+  rv: number;
   guests: number;
   cars: number;
   amount_cents: number | null;
@@ -40,8 +41,8 @@ function fullName(b: BookingRow) {
 }
 
 function plotsLine(b: BookingRow) {
-  const s = plotSummary({ small: b.small, medium: b.medium, large: b.large });
-  return s || `${b.sites} plot${b.sites !== 1 ? "s" : ""}`;
+  const s = plotSummary({ small: b.small, medium: b.medium, large: b.large, rv: b.rv });
+  return s || `${b.sites} site${b.sites !== 1 ? "s" : ""}`;
 }
 
 function resend() {
@@ -66,7 +67,7 @@ export async function sendBookingConfirmation(b: BookingRow) {
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Phone</td><td style="padding: 12px 0;">${b.phone ?? "—"}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Arrival</td><td style="padding: 12px 0;">${b.arrival_date}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Departure</td><td style="padding: 12px 0;">${b.departure_date}</td></tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Plots</td><td style="padding: 12px 0;">${plotsLine(b)} (${b.sites} plot${b.sites !== 1 ? "s" : ""})</td></tr>
+      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Sites</td><td style="padding: 12px 0;">${plotsLine(b)} (${b.sites} site${b.sites !== 1 ? "s" : ""})</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Guests</td><td style="padding: 12px 0;">${b.guests}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Cars</td><td style="padding: 12px 0;">${b.cars}</td></tr>
       ${b.notes ? `<tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Notes</td><td style="padding: 12px 0;">${b.notes}</td></tr>` : ""}
@@ -90,7 +91,7 @@ export async function sendBookingConfirmation(b: BookingRow) {
     <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-bottom: 32px;">
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070; width: 40%;">Arrival</td><td style="padding: 12px 0; font-weight: 600;">${b.arrival_date}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Departure</td><td style="padding: 12px 0; font-weight: 600;">${b.departure_date}</td></tr>
-      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Plots</td><td style="padding: 12px 0;">${plotsLine(b)}</td></tr>
+      <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Sites</td><td style="padding: 12px 0;">${plotsLine(b)}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Guests</td><td style="padding: 12px 0;">${b.guests}</td></tr>
       <tr style="border-bottom: 1px solid #EDE4D3;"><td style="padding: 12px 0; color: #8B8070;">Cars</td><td style="padding: 12px 0;">${b.cars}</td></tr>
       <tr><td style="padding: 16px 0; color: #2D5016; font-weight: 700;">Total Paid</td><td style="padding: 16px 0; color: #2D5016; font-weight: 700; font-size: 1.2rem;">$${total.toFixed(2)}</td></tr>

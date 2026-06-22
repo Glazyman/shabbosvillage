@@ -4,28 +4,30 @@
 //
 // PRICING MODEL: we rent PLOTS OF LAND, not tents. You pay $85 per plot, per
 // night — flat, no matter how many tents you pitch on it. A plot's size just
-// tells you what tent fits: a small plot fits a small tent, etc. Want more
-// room? Rent more plots ($85 each). Capacity is measured in plots (1 plot = 1
-// of the 50 sites).
+// tells you what tent fits: a small plot fits a small tent, etc. RV spots are
+// also available at $100 per night. Want more room? Rent more units (each is
+// priced per night). Capacity is measured in sites (1 plot or 1 RV = 1 of the
+// 50 sites).
 
-export const CAPACITY = 50; // total plots
+export const CAPACITY = 50; // total sites
 
-// Flat pricing: every plot is $85/night regardless of size. Sizes differ only
-// in how big a tent fits, not in price.
+// Tent plots are a flat $85/night regardless of size; an RV spot is $100/night.
 export const PLOT_PRICE_PER_NIGHT = 85;
+export const RV_PRICE_PER_NIGHT = 100;
 
 export const PLOT_SIZES = {
   small: { label: "Small plot", price: PLOT_PRICE_PER_NIGHT, people: 2, fits: "fits a small tent" },
   medium: { label: "Medium plot", price: PLOT_PRICE_PER_NIGHT, people: 4, fits: "fits a medium tent" },
   large: { label: "Large plot", price: PLOT_PRICE_PER_NIGHT, people: 8, fits: "fits a large tent" },
+  rv: { label: "RV spot", price: RV_PRICE_PER_NIGHT, people: 6, fits: "for an RV or camper" },
 } as const;
 
 export type PlotSize = keyof typeof PLOT_SIZES;
-export const PLOT_ORDER: PlotSize[] = ["small", "medium", "large"];
+export const PLOT_ORDER: PlotSize[] = ["small", "medium", "large", "rv"];
 
-export type PlotCounts = { small: number; medium: number; large: number };
+export type PlotCounts = Record<PlotSize, number>;
 
-// How many of the 50 plots each rental type consumes (regular = its plot count).
+// How many of the 50 sites each rental type consumes (regular = its unit count).
 export const RENTAL_SITES = { whole: CAPACITY, half: CAPACITY / 2 } as const;
 
 export type BookingKind = "regular" | "whole" | "half" | "camp";
@@ -45,24 +47,16 @@ export function nightsBetween(arrival: string, departure: string): number {
 }
 
 export function totalPlots(t: PlotCounts): number {
-  return (t.small || 0) + (t.medium || 0) + (t.large || 0);
+  return PLOT_ORDER.reduce((sum, k) => sum + (t[k] || 0), 0);
 }
 
 export function maxGuests(t: PlotCounts): number {
-  return (
-    (t.small || 0) * PLOT_SIZES.small.people +
-    (t.medium || 0) * PLOT_SIZES.medium.people +
-    (t.large || 0) * PLOT_SIZES.large.people
-  );
+  return PLOT_ORDER.reduce((sum, k) => sum + (t[k] || 0) * PLOT_SIZES[k].people, 0);
 }
 
-// Per-night price in whole dollars for a set of plots.
+// Per-night price in whole dollars for a set of units.
 export function perNightDollars(t: PlotCounts): number {
-  return (
-    (t.small || 0) * PLOT_SIZES.small.price +
-    (t.medium || 0) * PLOT_SIZES.medium.price +
-    (t.large || 0) * PLOT_SIZES.large.price
-  );
+  return PLOT_ORDER.reduce((sum, k) => sum + (t[k] || 0) * PLOT_SIZES[k].price, 0);
 }
 
 export function calcRegularTotalCents(t: PlotCounts, nights: number): number {
@@ -72,16 +66,16 @@ export function calcRegularTotalCents(t: PlotCounts, nights: number): number {
 // Returns an error string if the regular booking is invalid, else null.
 export function validateRegular(t: PlotCounts, cars: number, arrival: string, departure: string): string | null {
   const plots = totalPlots(t);
-  if (plots < 1) return "Please add at least one plot.";
+  if (plots < 1) return "Please add at least one plot or RV spot.";
   if (nightsBetween(arrival, departure) < 1) return "Please choose valid arrival and departure dates.";
   const carsN = Math.max(0, Math.floor(cars || 0));
   if (carsN > plots * MAX_CARS_PER_PLOT) {
-    return `Up to ${MAX_CARS_PER_PLOT} cars per plot — max ${plots * MAX_CARS_PER_PLOT} for ${plots} plot${plots > 1 ? "s" : ""}.`;
+    return `Up to ${MAX_CARS_PER_PLOT} cars per site — max ${plots * MAX_CARS_PER_PLOT} for ${plots} site${plots > 1 ? "s" : ""}.`;
   }
   return null;
 }
 
-// Plots consumed by a group request.
+// Sites consumed by a group request.
 export function groupSites(kind: BookingKind, campSites: number): number {
   if (kind === "whole") return RENTAL_SITES.whole;
   if (kind === "half") return RENTAL_SITES.half;
