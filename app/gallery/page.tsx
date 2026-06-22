@@ -2,15 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 const photos = [
-  { src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=900&q=85", alt: "Tent camping in wooded area", caption: "Camp Sites", span: "tall" },
+  { src: "/gallery/entrance.jpg", alt: "Welcome to Shabbos Village sign at the entrance driveway", caption: "Welcome to the Village", span: "tall" },
   { src: "https://images.unsplash.com/photo-1537905569824-f89f14cceb68?w=900&q=85", alt: "Forest tent", caption: "Forest Sites", span: "normal" },
   { src: "https://images.unsplash.com/photo-1476611338391-6f395a0dd82e?w=900&q=85", alt: "Campfire gathering", caption: "Evening Fires", span: "normal" },
   { src: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=900&q=85", alt: "Tent under stars at night", caption: "Starry Nights", span: "wide" },
-  { src: "https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=900&q=85", alt: "Campground tents", caption: "Family Sites", span: "normal" },
+  { src: "/gallery/bathhouse.jpg", alt: "On-site bathhouse with private shower and toilet rooms", caption: "Showers & Toilets", span: "normal" },
   { src: "https://images.unsplash.com/photo-1455496231601-e6195da1f841?w=900&q=85", alt: "Nature camping scene", caption: "Nature & Trails", span: "normal" },
-  { src: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=900&q=85", alt: "Camping at night", caption: "Night at Camp", span: "tall" },
+  { src: "/gallery/rv-site.jpg", alt: "RV parked at a wooded campsite with a fire ring", caption: "RV Sites", span: "tall" },
   { src: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=900&q=85", alt: "Relaxing in nature", caption: "Rest & Relax", span: "normal" },
-  { src: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=85", alt: "Campfire circle", caption: "Gathering Area", span: "normal" },
+  { src: "/gallery/gathering.jpg", alt: "Volleyball court, fire pit, and seating in the gathering field", caption: "Volleyball & Fire Pit", span: "normal" },
 ];
 
 export default function GalleryPage() {
@@ -40,7 +40,7 @@ export default function GalleryPage() {
       {/* ── INTRO ── */}
       <section style={{ maxWidth: "860px", margin: "0 auto", padding: "clamp(40px,6vw,80px) clamp(20px,4vw,40px) clamp(30px,5vw,60px)" }}>
         <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#4a4a3a", borderLeft: "2px solid #D4A853", paddingLeft: "20px" }}>
-          These photos are a preview of the Shabbos Village experience. Real campground photos coming soon — check back after our opening season.
+          A look at the Shabbos Village experience — including real photos from our grounds. More from around the campground coming soon.
         </p>
       </section>
 
@@ -87,7 +87,7 @@ export default function GalleryPage() {
         </div>
 
         <p style={{ textAlign: "center", marginTop: "48px", fontSize: "0.85rem", color: "#8B8070", fontStyle: "italic" }}>
-          All photos are placeholder images. Our real campground photos will be uploaded soon.
+          Some images are previews; more real photos from Shabbos Village will be added soon.
         </p>
       </section>
 
