@@ -9,7 +9,7 @@ const photos = [
   { src: "/gallery/bathhouse.jpg", alt: "On-site bathhouse with private shower and toilet rooms", caption: "Showers & Toilets", span: "normal" },
   { src: "https://images.unsplash.com/photo-1455496231601-e6195da1f841?w=900&q=85", alt: "Nature camping scene", caption: "Nature & Trails", span: "normal" },
   { src: "/gallery/rv-site.jpg", alt: "RV parked at a wooded campsite with a fire ring", caption: "RV Sites", span: "tall" },
-  { src: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=900&q=85", alt: "Relaxing in nature", caption: "Rest & Relax", span: "normal" },
+  { src: "/gallery/canteen.png", alt: "The Shabbos Village canteen — a snack shack with a menu board, string lights, and a shaded awning", caption: "The Canteen", span: "normal" },
   { src: "/gallery/gathering.jpg", alt: "Volleyball court, fire pit, and seating in the gathering field", caption: "Volleyball & Fire Pit", span: "normal" },
 ];
 

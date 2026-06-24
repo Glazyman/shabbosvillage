@@ -118,6 +118,11 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 
 ## Session Log
 
+### 2026-06-24 — Gallery: swap placeholder for real Canteen photo
+
+- Removed the "Rest & Relax" Unsplash placeholder from the gallery grid
+- Added real photo of the Village Canteen (`public/gallery/canteen.png`) in its place, caption "The Canteen"
+
 ### 2026-05-27 — Initial build
 
 - Created full Next.js 14 site from scratch (initial commit from Create Next App)
