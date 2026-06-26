@@ -118,6 +118,12 @@ Tent Camping · Electric Hookups · Showers & Toilets · Creek Access · Nature 
 
 ## Session Log
 
+### 2026-06-26 — Gallery: remove all placeholders, add bath-house photo
+
+- Removed all Unsplash placeholder images from the gallery — the 4 remaining grid tiles (Forest Sites, Evening Fires, Starry Nights, Nature & Trails) and the hero background
+- Added real bath-house photo (`public/gallery/bath-rooms.png`), wide grid tile, caption "Private Bath Rooms"
+- Pointed the hero at a real local photo (`gathering.jpg`); grid is now 100% real photos. Future images to be added manually as the user supplies them
+
 ### 2026-06-24 — Gallery: swap placeholder for real Canteen photo
 
 - Removed the "Rest & Relax" Unsplash placeholder from the gallery grid
