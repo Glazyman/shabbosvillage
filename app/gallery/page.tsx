@@ -3,11 +3,8 @@ import Link from "next/link";
 
 const photos = [
   { src: "/gallery/entrance.jpg", alt: "Welcome to Shabbos Village sign at the entrance driveway", caption: "Welcome to the Village", span: "tall" },
-  { src: "https://images.unsplash.com/photo-1537905569824-f89f14cceb68?w=900&q=85", alt: "Forest tent", caption: "Forest Sites", span: "normal" },
-  { src: "https://images.unsplash.com/photo-1476611338391-6f395a0dd82e?w=900&q=85", alt: "Campfire gathering", caption: "Evening Fires", span: "normal" },
-  { src: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=900&q=85", alt: "Tent under stars at night", caption: "Starry Nights", span: "wide" },
+  { src: "/gallery/bath-rooms.png", alt: "Wooden bath house in the woods with five private shower and toilet rooms under a green metal roof", caption: "Private Bath Rooms", span: "wide" },
   { src: "/gallery/bathhouse.jpg", alt: "On-site bathhouse with private shower and toilet rooms", caption: "Showers & Toilets", span: "normal" },
-  { src: "https://images.unsplash.com/photo-1455496231601-e6195da1f841?w=900&q=85", alt: "Nature camping scene", caption: "Nature & Trails", span: "normal" },
   { src: "/gallery/rv-site.jpg", alt: "RV parked at a wooded campsite with a fire ring", caption: "RV Sites", span: "tall" },
   { src: "/gallery/canteen.png", alt: "The Shabbos Village canteen — a snack shack with a menu board, string lights, and a shaded awning", caption: "The Canteen", span: "normal" },
   { src: "/gallery/gathering.jpg", alt: "Volleyball court, fire pit, and seating in the gathering field", caption: "Volleyball & Fire Pit", span: "normal" },
@@ -20,7 +17,7 @@ export default function GalleryPage() {
       {/* ── HERO ── */}
       <section style={{ position: "relative", height: "50vh", minHeight: "360px", overflow: "hidden" }}>
         <Image
-          src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=85"
+          src="/gallery/gathering.jpg"
           alt="Shabbos Village campground"
           fill
           style={{ objectFit: "cover", objectPosition: "center 40%" }}
@@ -87,7 +84,7 @@ export default function GalleryPage() {
         </div>
 
         <p style={{ textAlign: "center", marginTop: "48px", fontSize: "0.85rem", color: "#8B8070", fontStyle: "italic" }}>
-          Some images are previews; more real photos from Shabbos Village will be added soon.
+          More photos from around Shabbos Village will be added soon.
         </p>
       </section>
 
